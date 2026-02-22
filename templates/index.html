@@ -121,6 +121,24 @@
     line-height: 1.8;
   }
 
+  /* Role icons — only visible in shift mode */
+  .block::before {
+    font-size: 0.7rem;
+    margin-right: 4px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    display: inline;
+  }
+  .role-S::before  { content: '🧑'; }
+  .role-V::before  { content: '⚡'; }
+  .role-O::before  { content: '🎯'; }
+  .role-C::before  { content: '🪞'; }
+  .role-M::before  { content: '📍'; }
+  .role-CONJ::before { content: '🔸'; }
+  .role-REL::before  { content: '🔗'; }
+  .role-SUB::before  { content: '📦'; }
+  .shift-mode::before { opacity: 0.9; }
+
   /* Role colors — no labels, only colors speak */
   .role-S  { border-color: #4a9eff; background: rgba(74,158,255,0.08); }
   .role-V  { border-color: #ff6b6b; background: rgba(255,107,107,0.08); }
@@ -231,6 +249,10 @@
     border-radius: 3px;
   }
 
+  .leg-shift { display: none; }
+  body.shift-active .leg-shift { display: inline; }
+  body.shift-active .leg-normal { display: none; }
+
   .error { color: #ff6b6b; margin-top: 20px; }
 
   .loading {
@@ -279,14 +301,14 @@
 <div class="result-area" id="result"></div>
 
 <div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:#4a9eff"></div>Subject</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div>Verb</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#51cf66"></div>Object</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ffd43b"></div>Complement</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#b197fc"></div>Modifier</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#20c997"></div>Clause</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ff922b"></div>Relative</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#868e96"></div>Conjunction</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#4a9eff"></div><span class="leg-normal">Subject</span><span class="leg-shift">🧑 誰が</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div><span class="leg-normal">Verb</span><span class="leg-shift">⚡ どうする</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#51cf66"></div><span class="leg-normal">Object</span><span class="leg-shift">🎯 何を</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ffd43b"></div><span class="leg-normal">Complement</span><span class="leg-shift">🪞 ＝何</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#b197fc"></div><span class="leg-normal">Modifier</span><span class="leg-shift">📍 いつ・どこ</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#20c997"></div><span class="leg-normal">Clause</span><span class="leg-shift">📦 文の中の文</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff922b"></div><span class="leg-normal">Relative</span><span class="leg-shift">🔗 説明する文</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#868e96"></div><span class="leg-normal">Conjunction</span><span class="leg-shift">🔸 つなぎ</span></div>
 </div>
 
 <div class="history" id="history"></div>
@@ -297,12 +319,14 @@ let shiftHeld = false;
 document.addEventListener('keydown', e => {
   if (e.key === 'Shift' && !shiftHeld) {
     shiftHeld = true;
+    document.body.classList.add('shift-active');
     document.querySelectorAll('.block').forEach(b => b.classList.add('shift-mode'));
   }
 });
 document.addEventListener('keyup', e => {
   if (e.key === 'Shift') {
     shiftHeld = false;
+    document.body.classList.remove('shift-active');
     document.querySelectorAll('.block').forEach(b => b.classList.remove('shift-mode'));
   }
 });
