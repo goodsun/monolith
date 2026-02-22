@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monolith — Structural English Visualizer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    margin-top: 40px;
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  .input-area {
+    margin-top: 40px;
+    display: flex;
+    gap: 12px;
+    width: 90%;
+    max-width: 800px;
+  }
+
+  textarea {
+    flex: 1;
+    padding: 14px 20px;
+    font-size: 1.05rem;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: vertical;
+    min-height: 48px;
+    max-height: 200px;
+    font-family: inherit;
+    line-height: 1.5;
+  }
+
+  textarea:focus { border-color: #666; }
+
+  button {
+    padding: 14px 28px;
+    font-size: 1rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+    align-self: flex-end;
+  }
+
+  button:hover { background: #ddd; }
+  button:disabled { background: #444; color: #888; cursor: wait; }
+
+  .result-area {
+    margin-top: 48px;
+    width: 90%;
+    max-width: 800px;
+    min-height: 100px;
+  }
+
+  .sentence-group {
+    margin-bottom: 28px;
+  }
+
+  .original {
+    color: #555;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .blocks-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  /* Block rendering */
+  .block {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 6px 12px;
+    margin: 3px;
+    border-radius: 6px;
+    border: 2px solid;
+    position: relative;
+    vertical-align: top;
+  }
+
+  .block-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+
+  /* Role colors — no labels, only colors speak */
+  .role-S  { border-color: #4a9eff; background: rgba(74,158,255,0.08); }
+  .role-V  { border-color: #ff6b6b; background: rgba(255,107,107,0.08); }
+  .role-O  { border-color: #51cf66; background: rgba(81,207,102,0.08); }
+  .role-C  { border-color: #ffd43b; background: rgba(255,212,59,0.08); }
+  .role-M  { border-color: #b197fc; background: rgba(177,151,252,0.08); }
+  .role-CONJ { border-color: #868e96; background: rgba(134,142,150,0.08); }
+  .role-REL  { border-color: #ff922b; background: rgba(255,146,43,0.08); }
+  .role-SUB  { border-color: #20c997; background: rgba(32,201,151,0.08); }
+
+  .role-S .block-text  { color: #4a9eff; }
+  .role-V .block-text  { color: #ff6b6b; }
+  .role-O .block-text  { color: #51cf66; }
+  .role-C .block-text  { color: #ffd43b; }
+  .role-M .block-text  { color: #b197fc; }
+  .role-CONJ .block-text { color: #868e96; }
+  .role-REL .block-text  { color: #ff922b; }
+  .role-SUB .block-text  { color: #20c997; }
+
+  /* Nested blocks get slightly more padding and distinct background */
+  .block .block { background: rgba(255,255,255,0.03); }
+  .block .block .block { background: rgba(255,255,255,0.05); }
+
+  /* Tooltip */
+  .block { position: relative; cursor: default; }
+  .block > .tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #111;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .block > .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #fff;
+  }
+  .block:hover > .tooltip { display: block; }
+  .block.shift-mode > .tooltip { display: none; }
+
+  /* Word-level tooltips */
+  .word-span { position: relative; cursor: pointer; }
+  .word-span .word-tip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffe066;
+    color: #111;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 101;
+    pointer-events: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .word-span .word-tip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #ffe066;
+  }
+  .shift-mode .word-span:hover .word-tip { display: block; }
+
+  /* Clickable text blocks */
+  .block-text { cursor: pointer; transition: opacity 0.15s; }
+  .block-text:active { opacity: 0.6; }
+  .block-text.speaking { text-decoration: underline; text-decoration-style: dotted; }
+
+  /* Legend */
+  .legend {
+    margin-top: 48px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0.6;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+
+  .error { color: #ff6b6b; margin-top: 20px; }
+
+  .loading {
+    color: #666;
+    font-size: 1.1rem;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* History */
+  .history {
+    margin-top: 60px;
+    width: 90%;
+    max-width: 800px;
+    border-top: 1px solid #222;
+    padding-top: 24px;
+  }
+
+  .history-entry {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .separator {
+    border: none;
+    border-top: 1px solid #222;
+    margin: 16px 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>◼ Monolith</h1>
+<p class="subtitle">Structural English Visualizer</p>
+
+<div class="input-area">
+  <textarea id="sentence" placeholder="Enter English sentence(s)..." rows="2"></textarea>
+  <button id="parseBtn" onclick="parse()">Parse</button>
+</div>
+
+<div class="result-area" id="result"></div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#4a9eff"></div>Subject</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div>Verb</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#51cf66"></div>Object</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ffd43b"></div>Complement</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#b197fc"></div>Modifier</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#20c997"></div>Clause</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff922b"></div>Relative</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#868e96"></div>Conjunction</div>
+</div>
+
+<div class="history" id="history"></div>
+
+<script>
+// Shift key tracking for word-level tooltips
+let shiftHeld = false;
+document.addEventListener('keydown', e => {
+  if (e.key === 'Shift' && !shiftHeld) {
+    shiftHeld = true;
+    document.querySelectorAll('.block').forEach(b => b.classList.add('shift-mode'));
+  }
+});
+document.addEventListener('keyup', e => {
+  if (e.key === 'Shift') {
+    shiftHeld = false;
+    document.querySelectorAll('.block').forEach(b => b.classList.remove('shift-mode'));
+  }
+});
+
+// TTS via Web Speech API
+function speak(text, el) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  utter.rate = 0.9;
+  if (el) {
+    el.classList.add('speaking');
+    utter.onend = () => el.classList.remove('speaking');
+  }
+  window.speechSynthesis.speak(utter);
+}
+
+const input = document.getElementById('sentence');
+const btn = document.getElementById('parseBtn');
+const result = document.getElementById('result');
+const historyEl = document.getElementById('history');
+
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); parse(); }
+});
+
+function renderBlock(block) {
+  const el = document.createElement('span');
+  el.className = `block role-${block.role || 'M'}`;
+
+  // Tooltip with Japanese translation
+  if (block.ja) {
+    const tip = document.createElement('span');
+    tip.className = 'tooltip';
+    tip.textContent = block.ja;
+    el.appendChild(tip);
+  }
+
+  if (block.children && Array.isArray(block.children)) {
+    block.children.forEach(child => el.appendChild(renderBlock(child)));
+  } else if (block.text) {
+    const txt = document.createElement('span');
+    txt.className = 'block-text';
+    if (block.words && Array.isArray(block.words)) {
+      block.words.forEach((w, i) => {
+        const ws = document.createElement('span');
+        ws.className = 'word-span';
+        ws.textContent = w.en;
+        ws.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (shiftHeld) {
+            speak(w.en, ws);
+          } else {
+            speak(block.text, txt);
+          }
+        });
+        if (w.ja) {
+          const wt = document.createElement('span');
+          wt.className = 'word-tip';
+          wt.textContent = w.ja;
+          ws.appendChild(wt);
+        }
+        txt.appendChild(ws);
+        if (i < block.words.length - 1) txt.appendChild(document.createTextNode(' '));
+      });
+    } else {
+      txt.textContent = block.text;
+      txt.addEventListener('click', (e) => { e.stopPropagation(); speak(block.text, txt); });
+    }
+    el.appendChild(txt);
+  }
+  return el;
+}
+
+function renderSentences(sentences, container) {
+  sentences.forEach(s => {
+    const group = document.createElement('div');
+    group.className = 'sentence-group';
+
+    if (s.text) {
+      const orig = document.createElement('div');
+      orig.className = 'original';
+      orig.textContent = s.text;
+      group.appendChild(orig);
+    }
+
+    const wrap = document.createElement('div');
+    wrap.className = 'blocks-wrap';
+    if (Array.isArray(s.blocks)) {
+      s.blocks.forEach(b => wrap.appendChild(renderBlock(b)));
+    }
+    group.appendChild(wrap);
+    container.appendChild(group);
+  });
+}
+
+async function parse() {
+  const sentence = input.value.trim();
+  if (!sentence) return;
+
+  btn.disabled = true;
+  result.innerHTML = '<div class="loading">◼ ◼ ◼</div>';
+
+  try {
+    const res = await fetch('/monolith/api/parse', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({sentence})
+    });
+    const data = await res.json();
+
+    if (data.error) {
+      result.innerHTML = `<div class="error">${data.error}</div>`;
+      return;
+    }
+
+    result.innerHTML = '';
+    const sentences = data.sentences || [];
+    renderSentences(sentences, result);
+
+    input.value = '';
+    input.focus();
+  } catch(e) {
+    result.innerHTML = `<div class="error">${e.message}</div>`;
+  } finally {
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
