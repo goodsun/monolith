@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorial — Monolith</title>
+<link rel="icon" href="/static/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #151515;
+  --text: #e8e0d8;
+  --text-light: #9a8e82;
+  --accent: #D4956A;
+  --blue: #5b8fb9;
+  --red: #c75050;
+  --green: #5ba55b;
+  --yellow: #c7a840;
+  --purple: #9b6eb5;
+  --orange: #d48540;
+  --teal: #4a9a8a;
+  --gray: #888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans JP', 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Header */
+.tut-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.tut-header h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.tut-header p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* Step */
+.step {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-number {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.step h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.step p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Sentence block display */
+.sentence-demo {
+  background: var(--bg-card);
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+}
+
+.blocks {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.block.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.block-en {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.block-ja {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.block.s { border-color: var(--blue); background: rgba(91,143,185,0.1); }
+.block.s .block-en { color: var(--blue); }
+.block.s .block-ja { color: rgba(91,143,185,0.7); }
+
+.block.v { border-color: var(--red); background: rgba(199,80,80,0.1); }
+.block.v .block-en { color: var(--red); }
+.block.v .block-ja { color: rgba(199,80,80,0.7); }
+
+.block.o { border-color: var(--green); background: rgba(91,165,91,0.1); }
+.block.o .block-en { color: var(--green); }
+.block.o .block-ja { color: rgba(91,165,91,0.7); }
+
+.block.c { border-color: var(--yellow); background: rgba(199,168,64,0.1); }
+.block.c .block-en { color: var(--yellow); }
+.block.c .block-ja { color: rgba(199,168,64,0.7); }
+
+.block.m { border-color: var(--purple); background: rgba(155,110,181,0.1); }
+.block.m .block-en { color: var(--purple); }
+.block.m .block-ja { color: rgba(155,110,181,0.7); }
+
+/* Insight callout */
+.insight {
+  background: rgba(212,149,106,0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+.insight strong {
+  color: var(--text);
+}
+
+/* Dim blocks for focus effect */
+.blocks.focus .block:not(.highlight) {
+  opacity: 0.25;
+}
+.blocks.focus .block.highlight {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Navigation */
+.tut-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #222;
+}
+.tut-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
+.tut-nav a:hover { opacity: 0.7; }
+
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: var(--accent);
+  color: #000;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
+.cta-button:hover { opacity: 0.85; }
+
+/* Arrow between blocks */
+.arrow {
+  color: var(--text-light);
+  font-size: 1.2rem;
+  align-self: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.arrow.show { opacity: 0.4; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .block-en { font-size: 1.1rem; }
+  .block { padding: 0.6rem 0.8rem; }
+  .container { padding: 2rem 1rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="tut-header">
+  <h1><i class="fas fa-cube" style="color:var(--accent);margin-right:0.3em;font-size:0.8em"></i> Monolith Tutorial</h1>
+  <p>3つの色を覚えるだけ。それだけで英語が読める。</p>
+</div>
+
+<!-- STEP 1: 3色 -->
+<div class="step" id="step1">
+  <span class="step-number">Step 1</span>
+  <h2>英語は3色でできている</h2>
+  <p>むずかしい文法用語は忘れてください。<br>英語の文は、たった3つのパーツでできています。</p>
+
+  <div class="sentence-demo">
+    <div class="blocks" id="blocks1">
+      <div class="block s" data-delay="0">
+        <span class="block-en">I</span>
+        <span class="block-ja">わたしは</span>
+      </div>
+      <div class="block v" data-delay="400">
+        <span class="block-en">like</span>
+        <span class="block-ja">すきなんだ</span>
+      </div>
+      <div class="block o" data-delay="800">
+        <span class="block-en">cats</span>
+        <span class="block-ja">猫が！</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>青</strong> = 誰が　　<strong style="color:var(--red)">赤</strong> = どうした　　<strong style="color:var(--green)">緑</strong> = 何を<br>
+    これだけ。これが英語の骨格です。
+  </div>
+</div>
+
+<!-- STEP 2: パターンは同じ -->
+<div class="step" id="step2">
+  <span class="step-number">Step 2</span>
+  <h2>どんな文でも、同じパターン</h2>
+  <p>別の文を見てみましょう。</p>
+
+  <div class="sentence-demo">
+    <div class="blocks" id="blocks2">
+      <div class="block s" data-delay="0">
+        <span class="block-en">He</span>
+        <span class="block-ja">彼は</span>
+      </div>
+      <div class="block v" data-delay="400">
+        <span class="block-en">kicked</span>
+        <span class="block-ja">蹴った</span>
+      </div>
+      <div class="block o" data-delay="800">
+        <span class="block-en">the ball</span>
+        <span class="block-ja">そのボールを</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sentence-demo" style="margin-top:1rem">
+    <div class="blocks" id="blocks2b">
+      <div class="block s" data-delay="0">
+        <span class="block-en">My sister</span>
+        <span class="block-ja">姉が</span>
+      </div>
+      <div class="block v" data-delay="400">
+        <span class="block-en">plays</span>
+        <span class="block-ja">弾くんだよ</span>
+      </div>
+      <div class="block o" data-delay="800">
+        <span class="block-en">the piano</span>
+        <span class="block-ja">ピアノを</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>青 → 赤 → 緑。いつも同じ順番。</strong><br>
+    主語が1単語でも2単語でも、色は変わりません。<br>
+    英語は「誰が → どうした → 何を」の順番で並ぶ言語。日本語とは逆ですね。
+  </div>
+</div>
+
+<!-- STEP 3: 色が増える -->
+<div class="step" id="step3">
+  <span class="step-number">Step 3</span>
+  <h2>色が増えても、怖くない</h2>
+  <p>実際の英語にはもうちょっとパーツがあります。<br>でも大丈夫。新しい色が増えるだけ。</p>
+
+  <div class="sentence-demo">
+    <div class="blocks" id="blocks3">
+      <div class="block s" data-delay="0">
+        <span class="block-en">She</span>
+        <span class="block-ja">彼女は</span>
+      </div>
+      <div class="block v" data-delay="400">
+        <span class="block-en">drinks</span>
+        <span class="block-ja">飲む</span>
+      </div>
+      <div class="block o" data-delay="800">
+        <span class="block-en">coffee</span>
+        <span class="block-ja">コーヒーを</span>
+      </div>
+      <div class="block m" data-delay="1200">
+        <span class="block-en">every morning</span>
+        <span class="block-ja">毎朝</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong style="color:var(--purple)">紫</strong> = 飾り（いつ、どこで、どのように）<br>
+    青赤緑の骨格に、紫の「おまけ情報」がくっつくだけ。<br>
+    なくても文は成り立つけど、あると情報が増える。
+  </div>
+
+  <div class="sentence-demo" style="margin-top:1rem">
+    <div class="blocks" id="blocks3b">
+      <div class="block s" data-delay="0">
+        <span class="block-en">The sky</span>
+        <span class="block-ja">空は</span>
+      </div>
+      <div class="block v" data-delay="400">
+        <span class="block-en">is</span>
+        <span class="block-ja">だ</span>
+      </div>
+      <div class="block c" data-delay="800">
+        <span class="block-en">blue</span>
+        <span class="block-ja">青い</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong style="color:var(--yellow)">黄色</strong> = 説明（〜は…だ）<br>
+    「何を」じゃなくて「何だ」「どんなだ」のとき、緑の代わりに黄色が来ます。
+  </div>
+</div>
+
+<!-- STEP 4: まとめ -->
+<div class="step" id="step4">
+  <span class="step-number">Step 4</span>
+  <h2>これだけ覚えれば、あとは慣れるだけ</h2>
+
+  <div class="sentence-demo">
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; text-align:center;">
+      <div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--blue);margin:0 auto 0.5rem;"></div>
+        <div style="font-weight:600;">青</div>
+        <div style="color:var(--text-light);font-size:0.85rem;">誰が</div>
+      </div>
+      <div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--red);margin:0 auto 0.5rem;"></div>
+        <div style="font-weight:600;">赤</div>
+        <div style="color:var(--text-light);font-size:0.85rem;">どうした</div>
+      </div>
+      <div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--green);margin:0 auto 0.5rem;"></div>
+        <div style="font-weight:600;">緑</div>
+        <div style="color:var(--text-light);font-size:0.85rem;">何を</div>
+      </div>
+      <div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--yellow);margin:0 auto 0.5rem;"></div>
+        <div style="font-weight:600;">黄</div>
+        <div style="color:var(--text-light);font-size:0.85rem;">何だ・どんなだ</div>
+      </div>
+      <div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--purple);margin:0 auto 0.5rem;"></div>
+        <div style="font-weight:600;">紫</div>
+        <div style="color:var(--text-light);font-size:0.85rem;">飾り・おまけ</div>
+      </div>
+      <div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--teal);margin:0 auto 0.5rem;"></div>
+        <div style="font-weight:600;">他の色</div>
+        <div style="color:var(--text-light);font-size:0.85rem;">使ううちにわかる</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    最初は<strong>青・赤・緑</strong>だけ意識すればOK。<br>
+    他の色は、使っているうちに自然と見えてきます。<br>
+    <strong>文法用語は一つも覚えなくていい。色が教えてくれる。</strong>
+  </div>
+
+  <div style="text-align:center; margin-top:2.5rem;">
+    <a href="/app" class="cta-button"><i class="fas fa-cube" style="margin-right:0.4em"></i> Monolithを使ってみる</a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="tut-nav">
+  <a href="/"><i class="fas fa-arrow-left"></i> トップに戻る</a>
+  <a href="/app">アプリへ <i class="fas fa-arrow-right"></i></a>
+</div>
+
+</div>
+
+<script>
+// Scroll-triggered animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Animate blocks within this step
+      const blocks = entry.target.querySelectorAll('.block');
+      blocks.forEach(block => {
+        const delay = parseInt(block.dataset.delay || 0);
+        setTimeout(() => block.classList.add('show'), delay + 300);
+      });
+      const arrows = entry.target.querySelectorAll('.arrow');
+      arrows.forEach((a, i) => {
+        setTimeout(() => a.classList.add('show'), (i + 1) * 400 + 200);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.step').forEach(step => observer.observe(step));
+</script>
+</body>
+</html>

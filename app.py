@@ -116,6 +116,10 @@ def build_prompt(sentence, level="intermediate", translate=False):
 def landing():
     return render_template("lp.html")
 
+@app.route("/tutorial")
+def tutorial():
+    return render_template("tutorial.html")
+
 @app.route("/app")
 def index():
     return render_template("index.html")
