@@ -79,6 +79,8 @@ Sentence diagrams (Reed-Kellogg) and parse trees (Chomsky) provide visual repres
 
 Taniguchi (2016) proposes that symbols (including language) emerge through bodily interaction with the environment rather than being assigned top-down. This framework connects to the broader tradition of Embodied Cognition (Varela et al., 1991), which argues that cognition is fundamentally grounded in bodily experience rather than abstract symbol manipulation. The Enactive Approach suggests that understanding emerges through direct interaction with the environment—a principle that bridges SES theory and educational design.
 
+This theoretical lineage connects directly to Gibson's (1979) concept of **affordances**—the possibilities for action that objects or environments provide to an organism based on their physical properties and the organism's capabilities. In Monolith, the color-coded blocks function as structural affordances: they offer perceptual cues that *afford* specific patterns of understanding without requiring explicit grammatical explanation. Blue blocks afford "agent" recognition not through definitional teaching but through consistent perceptual association. This represents a shift from descriptive grammar (telling learners what structures "are") to affordance-based design (creating environments where understanding can emerge through direct perceptual engagement).
+
 Monolith draws inspiration from this lineage: where SES demonstrates how symbols emerge from embodied interaction with the environment, and Embodied Cognition shows that knowledge is rooted in physical experience, Monolith translates these insights into language education by converting abstract linguistic structures into visual-spatial experiences—transforming grammar from symbol-to-symbol mapping into direct perceptual engagement.
 
 ### 2.4 Cognitive Profiles and Learning
@@ -277,6 +279,8 @@ Natural language is fundamentally non-idempotent:
 
 Both parses are grammatically valid. Context determines meaning—and sometimes context is insufficient.
 
+This reveals a fundamental paradigm shift from **deterministic to probabilistic language education**. Traditional grammar instruction operates deterministically: each sentence has one "correct" analysis, students memorize rules, and deviation from the canonical parse is marked as error. Monolith embraces a probabilistic approach: multiple valid interpretations coexist, structural understanding develops through pattern recognition across variations, and ambiguity becomes a pedagogical resource rather than a problem to eliminate. This shift reflects the broader transition from rule-based to statistical approaches in AGI-era language processing.
+
 This non-idempotency extends beyond structural ambiguity. While structural ambiguity represents static properties of language (a sentence having multiple valid interpretations), non-idempotency in AI-powered parsing introduces dynamic stochastic elements—the same input may yield different results due to the parser's temperature parameters and sampling processes. Monolith treats both dimensions honestly: the inherent ambiguity of natural language and the additional variance introduced by AI parsing.
 
 ### 6.2 Embracing Ambiguity
@@ -439,13 +443,14 @@ The tool's philosophy—**to convey without speaking**—extends from its interf
 
 ## References
 
-1. Harnad, S. (1990). The Symbol Grounding Problem. *Physica D*, 42(1-3), 335-346.
-2. Kawashima, C., & Teddy. (2026). Monolith — Structural English Visualizer. GitHub. https://github.com/goodsun/monolith
-3. Krashen, S. (1982). *Principles and Practice in Second Language Acquisition*. Pergamon Press.
-4. Kubrick, S. (Director). (1968). *2001: A Space Odyssey* [Film]. Metro-Goldwyn-Mayer.
-5. Taniguchi, T. (2016). *Symbol Emergence in Robotics*. Springer.
-6. Varela, F. J., Thompson, E., & Rosch, E. (1991). *The Embodied Mind: Cognitive Science and Human Experience*. MIT Press.
-7. Wechsler, D. (2008). *Wechsler Adult Intelligence Scale—Fourth Edition (WAIS-IV)*. Pearson.
+1. Gibson, J. J. (1979). *The Ecological Approach to Visual Perception*. Houghton Mifflin.
+2. Harnad, S. (1990). The Symbol Grounding Problem. *Physica D*, 42(1-3), 335-346.
+3. Kawashima, C., & Teddy. (2026). Monolith — Structural English Visualizer. GitHub. https://github.com/goodsun/monolith
+4. Krashen, S. (1982). *Principles and Practice in Second Language Acquisition*. Pergamon Press.
+5. Kubrick, S. (Director). (1968). *2001: A Space Odyssey* [Film]. Metro-Goldwyn-Mayer.
+6. Taniguchi, T. (2016). *Symbol Emergence in Robotics*. Springer.
+7. Varela, F. J., Thompson, E., & Rosch, E. (1991). *The Embodied Mind: Cognitive Science and Human Experience*. MIT Press.
+8. Wechsler, D. (2008). *Wechsler Adult Intelligence Scale—Fourth Edition (WAIS-IV)*. Pearson.
 
 ---
 
