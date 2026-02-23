@@ -338,6 +338,26 @@
     border-color: #4a9eff;
     color: #4a9eff;
   }
+  .explain-toggle {
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .explain-toggle input { accent-color: #4a9eff; }
+  .explanation {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: #111;
+    border-left: 3px solid #4a9eff;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #999;
+  }
   .textarea-wrap {
     position: relative;
     width: 100%;
@@ -616,6 +636,7 @@
       <button class="level-btn" data-level="advanced" title="Complex nesting, academic vocabulary">Advanced</button>
     </div>
     <button id="parseBtn" onclick="parse()">Parse</button>
+    <label class="explain-toggle"><input type="checkbox" id="explainCheck"> 詳細解説</label>
   </div>
 </div>
 
@@ -795,6 +816,14 @@ function renderSentences(sentences, container) {
       s.blocks.forEach(b => wrap.appendChild(renderBlock(b)));
     }
     group.appendChild(wrap);
+
+    if (s.explanation) {
+      const exp = document.createElement('div');
+      exp.className = 'explanation';
+      exp.innerHTML = s.explanation.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong style="color:#4a9eff">$1</strong>');
+      group.appendChild(exp);
+    }
+
     container.appendChild(group);
   });
 }
@@ -894,7 +923,7 @@ parse = async function() {
     const res = await fetch(apiBase + '/api/parse', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({sentence, level: currentLevel})
+      body: JSON.stringify({sentence, level: currentLevel, explain: document.getElementById('explainCheck').checked})
     });
     const data = await res.json();
 

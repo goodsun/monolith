@@ -62,6 +62,13 @@ RULES:
 OUTPUT FORMAT:
 {{"sentences":[{{"text":"...","ja":"...","blocks":[...]}}]}}
 
+If the "explain" flag is true, add an "explanation" field to EACH sentence object.
+The explanation should be in Japanese, 2-3 sentences, covering:
+- What sentence pattern/structure is used (e.g. SVO, SVOC, there-construction, passive, etc.)
+- Notable nesting or clause relationships
+- Why this structure works (what nuance it conveys)
+Do NOT use grammar jargon — explain using Monolith's color/block metaphors (e.g. "赤ブロック(動詞)の後に緑の入れ子(従属節)が続く構造").
+
 Parse this:
 """
 
@@ -116,7 +123,10 @@ def parse():
     non_latin_count = sum(1 for c in sentence if unicodedata.category(c).startswith('Lo'))
     translate = non_latin_count > len(sentence) * 0.1
 
+    explain = data.get("explain", False)
     prompt = build_prompt(sentence, level=level, translate=translate)
+    if explain:
+        prompt += "\n[explain=true]\n"
 
     try:
         response = client.models.generate_content(
