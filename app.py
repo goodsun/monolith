@@ -58,6 +58,18 @@ RULES:
    - Appositive phrases (", a mathematics don") → separate M block
    - Compound modifiers → separate blocks
    Each leaf block should be SHORT — ideally under 6 words. If longer, find a way to split further.
+9. INTERROGATIVES: In questions, assign the grammatically correct role to question words:
+   - "Who" as subject: "Who came?" → Who=S (Who performs the action)
+   - "Who" as complement: "Who are you?" → you=S, Who=C (Who asks about identity, "you" is the subject)
+   - "What" as object: "What do you think?" → What=O, you=S
+   - "What" as subject: "What happened?" → What=S
+   - "Where/When/How/Why" → always M (modifier/adverbial)
+   The key test: in "X is Y?" form, the known noun is S and the question word is C.
+10. SPECIAL STRUCTURES:
+   - There-construction: "There is a cat" → There=M (dummy), is=V, a cat=S. The real subject is the noun after the verb.
+   - Inverted sentences: "Never have I seen" → Never=M, have seen=V, I=S. Don't merge the subject into V.
+   - It-cleft: "It was John who broke..." → It=S(formal), was=V, John=C, who-clause=REL
+   - Auxiliary inversion: "did she sing" → did sing=V (one unit), she=S. Don't split auxiliary from main verb when they form one predicate.
 
 OUTPUT FORMAT:
 {{"sentences":[{{"text":"...","ja":"...","blocks":[...]}}]}}
