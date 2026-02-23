@@ -218,6 +218,19 @@ body {
 }
 .arrow.show { opacity: 0.4; }
 
+/* Hidden school hints — revealed on Shift */
+.school-hint {
+  font-size: 0.8rem;
+  color: #666;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+body.shift-active .school-hint {
+  display: inline;
+  opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .block-en { font-size: 1.1rem; }
@@ -327,7 +340,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--blue)"><i class="fas fa-star"></i> 星</strong>。文の主役だから、一番輝く星。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「主語」と習ったかもしれない。覚えなくていい。青い星を探せばいい。</span><br>
+    <span class="school-hint">学校では「主語」と習ったかもしれない。覚えなくていい。青い星を探せばいい。</span><br>
     英語の文は必ず「青」から始まります。まずスターを探せば、文が読める。
   </div>
 
@@ -342,7 +355,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--red)"><i class="fas fa-car"></i> 車</strong>。文を前に動かすエンジン。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「動詞」と習ったかもしれない。覚えなくていい。赤い車を探せばいい。</span><br>
+    <span class="school-hint">学校では「動詞」と習ったかもしれない。覚えなくていい。赤い車を探せばいい。</span><br>
     青（誰が）の次に来るのが赤（どうした）。この2つだけで文は成り立ちます。
   </div>
 
@@ -358,7 +371,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--green)"><i class="fas fa-crosshairs"></i> 的</strong>。動作が向かう先、ターゲット。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「目的語」と習ったかもしれない。覚えなくていい。赤の動きが当たる緑の的。</span><br>
+    <span class="school-hint">学校では「目的語」と習ったかもしれない。覚えなくていい。赤の動きが当たる緑の的。</span><br>
     蹴る→ボール。食べる→りんご。赤の動きが「当たる」相手が緑です。
   </div>
 
@@ -374,7 +387,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--yellow)"><i class="fas fa-scale-balanced"></i> 天秤</strong>。左と右が釣り合う＝イコール。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「補語」と習ったかもしれない。覚えなくていい。あの忌々しいbe動詞の相棒。</span><br>
+    <span class="school-hint">学校では「補語」と習ったかもしれない。覚えなくていい。あの忌々しいbe動詞の相棒。</span><br>
     緑は「何かをする」相手、黄色は「何かである」説明。蹴るボールがあれば緑。ただの「＝」なら黄色。
   </div>
 
@@ -391,7 +404,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--purple)"><i class="fas fa-gem"></i> 宝石</strong>。文に輝きを添えるアクセサリー。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「修飾語」と習ったかもしれない。覚えなくていい。なくても文は成り立つ。</span><br>
+    <span class="school-hint">学校では「修飾語」と習ったかもしれない。覚えなくていい。なくても文は成り立つ。</span><br>
     紫を取り除いても "She drinks coffee" で通じる。でも紫があると情景が浮かぶ。
   </div>
 
@@ -408,7 +421,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--orange)"><i class="fas fa-layer-group"></i> 重なり</strong>。文の中にもう一つの情報が重なっている。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「関係詞節」とか習わされたが、覚えなくていい。括弧の感覚でOK。</span><br>
+    <span class="school-hint">学校では「関係詞節」とか習わされたが、覚えなくていい。括弧の感覚でOK。</span><br>
     橙は括弧のイメージ。"The book <strong style="color:var(--orange)">（わたしが買ったやつ）</strong>" ——メインの文に補足説明をくっつける色です。
   </div>
 
@@ -425,7 +438,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--teal)"><i class="fas fa-handshake"></i> 握手</strong>。メインの文と手をつなぐサブの文。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「従属節」と習ったかもしれない。名前が怖いだけ。中身はただの文。</span><br>
+    <span class="school-hint">学校では「従属節」と習ったかもしれない。名前が怖いだけ。中身はただの文。</span><br>
     青緑のかたまりは、それ自体が一つの文。メインの文に「理由」や「条件」をくっつけます。
   </div>
 
@@ -443,7 +456,7 @@ body {
   </div>
   <div class="insight">
     マークは<strong style="color:var(--gray)"><i class="fas fa-link"></i> 鎖</strong>。ものとものをつなぐ接着剤。<br>
-    <span style="font-size:0.8rem;color:#666">学校では「接続詞」と習ったかもしれない。覚えなくていい。and, but, because。</span><br>
+    <span class="school-hint">学校では「接続詞」と習ったかもしれない。覚えなくていい。and, but, because。</span><br>
     灰色は自分では意味を持たない。ただ、左と右をくっつけるだけ。シンプルだけど大事な役割。
   </div>
 </div>
@@ -541,6 +554,14 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 
 document.querySelectorAll('.step').forEach(step => observer.observe(step));
+
+// Shift key Easter egg
+document.addEventListener('keydown', e => {
+  if (e.key === 'Shift') document.body.classList.add('shift-active');
+});
+document.addEventListener('keyup', e => {
+  if (e.key === 'Shift') document.body.classList.remove('shift-active');
+});
 </script>
 </body>
 </html>
