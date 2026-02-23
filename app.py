@@ -48,6 +48,10 @@ Parse this:
 """
 
 @app.route("/")
+def landing():
+    return render_template("lp.html")
+
+@app.route("/app")
 def index():
     return render_template("index.html")
 

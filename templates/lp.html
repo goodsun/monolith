@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monolith — 文法用語ゼロの英語学習</title>
+<meta name="description" content="色とブロックだけで英語の構造が見える。文法用語を一切使わない、AGI時代の新しい英語学習ツール。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #151515;
+  --text: #e8e0d8;
+  --text-light: #9a8e82;
+  --accent: #D4956A;
+  --accent-light: #E8C4A8;
+  --blue: #5b8fb9;
+  --red: #c75050;
+  --green: #5ba55b;
+  --yellow: #c7a840;
+  --purple: #9b6eb5;
+  --orange: #d48540;
+  --teal: #4a9a8a;
+  --gray: #888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(212,149,106,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.hero .tagline {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero .tagline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, var(--accent), var(--orange));
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 24px rgba(212,149,106,0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212,149,106,0.4);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Sections */
+section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+section h2 {
+  font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--accent-light);
+}
+
+section h2 i {
+  margin-right: 0.5rem;
+  font-size: 1.4rem;
+}
+
+section p {
+  margin-bottom: 1.2rem;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.highlight-text {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Problem section */
+.problem-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border-left: 3px solid var(--red);
+}
+
+.problem-steps .step {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.problem-steps .step .num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.problem-steps .arrow {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.8rem;
+}
+
+/* Color blocks */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.color-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  background: var(--bg-card);
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.color-item:hover {
+  transform: translateX(4px);
+}
+
+.color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.color-item .label {
+  font-size: 0.9rem;
+}
+
+/* Demo block */
+.demo-box {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.demo-sentence {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.demo-blocks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+}
+
+.demo-blocks .block {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.demo-blocks .b-s { background: var(--blue); }
+.demo-blocks .b-v { background: var(--red); }
+.demo-blocks .b-o { background: var(--green); }
+.demo-blocks .b-c { background: var(--yellow); }
+.demo-blocks .b-m { background: var(--purple); }
+.demo-blocks .b-r { background: var(--orange); }
+.demo-blocks .b-sub { background: var(--teal); }
+.demo-blocks .b-conj { background: var(--gray); }
+
+/* Feature cards */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+}
+
+.feature-card .icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+}
+
+.feature-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* Comparison */
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.comp-col {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+
+.comp-col.old {
+  border-top: 3px solid var(--red);
+}
+
+.comp-col.new {
+  border-top: 3px solid var(--green);
+}
+
+.comp-col h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.comp-col ul {
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.comp-col ul li {
+  padding: 0.3rem 0;
+  color: var(--text-light);
+}
+
+.comp-col ul li::before {
+  margin-right: 0.5rem;
+}
+
+.comp-col.old ul li::before { content: '✗'; color: var(--red); }
+.comp-col.new ul li::before { content: '✓'; color: var(--green); }
+
+/* Quote */
+.philosophy-quote {
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  background: var(--bg-card);
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: var(--accent-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Final CTA */
+.final-cta {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.final-cta h2 {
+  color: var(--text);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.final-cta p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  border-top: 1px solid #222;
+}
+
+footer a { color: var(--accent); text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .hero .tagline { font-size: 1.2rem; }
+  .comparison { grid-template-columns: 1fr; }
+  section { padding: 4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>MONOLITH</h1>
+  <p class="subtitle">Structural English Visualizer</p>
+  <p class="tagline">文法用語ゼロ。<br><em>色とブロック</em>だけで、英語の構造が見える。</p>
+  <a href="/monolith/app" class="cta-button"><i class="fas fa-play"></i>&nbsp; 今すぐ試す</a>
+  <div class="scroll-hint"><i class="fas fa-chevron-down"></i></div>
+</div>
+
+<!-- Problem -->
+<section>
+  <h2><i class="fas fa-exclamation-triangle"></i> 従来の英語学習の問題</h2>
+  <p>これまでの英語学習は、<span class="highlight-text">「文法用語（記号）を覚え、その定義に基づいて英文を解析する」</span>という多段階の間接参照を要求してきました。</p>
+
+  <div class="problem-steps">
+    <div class="step"><span class="num">1</span> 文法用語を日本語で覚える</div>
+    <div class="arrow">↓</div>
+    <div class="step"><span class="num">2</span> その用語と英語の構造を対応づける</div>
+    <div class="arrow">↓</div>
+    <div class="step"><span class="num">3</span> 英文を見たときに用語を思い出す</div>
+    <div class="arrow">↓</div>
+    <div class="step"><span class="num">4</span> 用語の定義に基づいて構造を理解する</div>
+  </div>
+
+  <p>記号で記号を説明する——この回りくどさが、英語の構造理解を遠ざけてきました。<br>特に視覚・空間的な認知が得意な人にとって、このアプローチは認知特性と合致しません。</p>
+</section>
+
+<!-- Solution -->
+<section>
+  <h2><i class="fas fa-lightbulb"></i> Monolithのアプローチ：視覚的構造接地</h2>
+  <p>Monolithは、文法用語を<span class="highlight-text">一切使いません</span>。代わりに、色とブロックのネスト（入れ子）だけで英語の構造を表現します。</p>
+
+  <div class="color-grid">
+    <div class="color-item"><div class="color-dot" style="background:var(--blue)"></div><span class="label">誰が・何が</span></div>
+    <div class="color-item"><div class="color-dot" style="background:var(--red)"></div><span class="label">する</span></div>
+    <div class="color-item"><div class="color-dot" style="background:var(--green)"></div><span class="label">何を</span></div>
+    <div class="color-item"><div class="color-dot" style="background:var(--yellow)"></div><span class="label">＝何</span></div>
+    <div class="color-item"><div class="color-dot" style="background:var(--purple)"></div><span class="label">いつ・どこで・どうやって</span></div>
+    <div class="color-item"><div class="color-dot" style="background:var(--orange)"></div><span class="label">〜するところの</span></div>
+    <div class="color-item"><div class="color-dot" style="background:var(--teal)"></div><span class="label">〜ということ</span></div>
+    <div class="color-item"><div class="color-dot" style="background:var(--gray)"></div><span class="label">つなぎ言葉</span></div>
+  </div>
+
+  <div class="demo-box">
+    <div class="demo-sentence">I think that she knows what he said.</div>
+    <div class="demo-blocks">
+      <span class="block b-s">I</span>
+      <span class="block b-v">think</span>
+      <span class="block b-sub" style="padding:0.6rem; display:inline-flex; gap:4px; align-items:center; flex-wrap:wrap;">
+        <span class="block b-conj">that</span>
+        <span class="block b-s">she</span>
+        <span class="block b-v">knows</span>
+        <span class="block b-sub" style="padding:0.4rem; display:inline-flex; gap:4px; align-items:center;">
+          <span class="block b-conj">what</span>
+          <span class="block b-s">he</span>
+          <span class="block b-v">said</span>
+        </span>
+      </span>
+    </div>
+    <p style="margin-top:1rem; color:var(--text-light); font-size:0.85rem;">ブロックの入れ子が、文の階層構造をそのまま表現する</p>
+  </div>
+
+  <p>色のパターンを繰り返し見ることで、文法用語を覚えなくても英語の構造認識が自然に形成されます。<br>コードのインデント、DOMツリー、ディレクトリ構造——エンジニアにとっては馴染みのある表現です。</p>
+</section>
+
+<!-- Comparison -->
+<section>
+  <h2><i class="fas fa-exchange-alt"></i> 何が変わるのか</h2>
+
+  <div class="comparison">
+    <div class="comp-col old">
+      <h3>従来の英語学習</h3>
+      <ul>
+        <li>文法用語の暗記が前提</li>
+        <li>記号→記号の間接参照</li>
+        <li>言語的処理に依存</li>
+        <li>「正しい解釈」を押しつける</li>
+        <li>分析する側に立つ必要がある</li>
+      </ul>
+    </div>
+    <div class="comp-col new">
+      <h3>Monolith</h3>
+      <ul>
+        <li>文法用語ゼロ</li>
+        <li>色→意味の直接接地</li>
+        <li>視覚・空間的処理を活用</li>
+        <li>言語の揺らぎに誠実に向き合う</li>
+        <li>体験する側に回れる</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AI Role -->
+<section>
+  <h2><i class="fas fa-robot"></i> AIが解析し、人間が体験する</h2>
+  <p>従来の学習では、学習者自身が文法知識を使って英文を「分析」する必要がありました。</p>
+  <p>Monolithでは、<span class="highlight-text">AI（Gemini）が構文解析を担当</span>します。学習者は文法知識がなくても、AIが可視化した構造を「体験する」だけ。学習の入り口のハードルが劇的に下がります。</p>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="icon"><i class="fas fa-eye"></i></div>
+      <h3>見るだけで学べる</h3>
+      <p>色のパターンを眺めるだけで、英語の構造認識が無意識に形成されていきます。子どもが文法を学ばずに母語を習得するのと同じ原理。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon"><i class="fas fa-language"></i></div>
+      <h3>ホバーで和訳</h3>
+      <p>ブロックにマウスオーバーでブロック単位の和訳。Shiftキーで単語ごとの訳。辞書いらずで文脈の中で意味を把握。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon"><i class="fas fa-volume-up"></i></div>
+      <h3>クリックで発音</h3>
+      <p>ブロックをクリックでその部分を読み上げ。Shift+クリックで単語単位の発音。視覚と聴覚の両方から構造を体験。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon"><i class="fas fa-layer-group"></i></div>
+      <h3>2つのモード</h3>
+      <p>通常モード：色だけのシンプルな表示。Shiftモード：アイコン・和訳・凡例が表示され、より深い理解をサポート。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Theory -->
+<section>
+  <h2><i class="fas fa-brain"></i> 理論的背景：記号創発</h2>
+  <p>Monolithのアプローチは、谷口忠大教授の<span class="highlight-text">記号創発システム論</span>に基づいています。</p>
+  <p>従来の英語教育は「英語」という記号体系を「日本語」という別の記号体系を経由して学ぶ——記号間マッピングであり、真の意味での「接地」が起きにくい。</p>
+  <p>Monolithは、身体性（視覚・空間認知）を活用し、色とブロックという<span class="highlight-text">新しい記号体系</span>を通じて、英語の構造という意味を直接接地させます。文法用語を経由しない、視覚パターンからの直接的な意味理解。これは記号創発の実践的応用です。</p>
+</section>
+
+<!-- Non-idempotency -->
+<section>
+  <h2><i class="fas fa-infinity"></i> 自然言語の非冪等性</h2>
+
+  <div class="philosophy-quote">
+    自然言語には冪等性がない。<br>
+    この地点に一度立たなければ、言語に誠実に向かい合うことはできない。
+  </div>
+
+  <p>プログラミング言語は冪等的です。同じコードは常に同じ結果を返す。<br>しかし自然言語はそうではありません。</p>
+
+  <div class="demo-box">
+    <div class="demo-sentence" style="font-size:1.1rem;">"I saw the man with the telescope"</div>
+    <p style="color:var(--text-light); font-size:0.9rem; margin-top:0.5rem;">
+      → 望遠鏡で男を見た？<br>
+      → 望遠鏡を持った男を見た？
+    </p>
+  </div>
+
+  <p>Monolithは、AIの解析結果が毎回同じとは限らないことを<span class="highlight-text">あえて隠しません</span>。<br>「唯一の正解を覚える」のではなく、「構造のパターンを体験し、揺らぎの中にパターンを見出す」——それが、言語に誠実に向き合うということです。</p>
+</section>
+
+<!-- Final CTA -->
+<div class="final-cta">
+  <h2>語らずに、伝える。</h2>
+  <p>文法用語も教科書もいらない。<br>色とブロックが、英語の骨格を浮かび上がらせる。</p>
+  <a href="/monolith/app" class="cta-button"><i class="fas fa-cube"></i>&nbsp; Monolithを体験する</a>
+</div>
+
+<footer>
+  <p>© 2026 <a href="https://corp.bon-soleil.com">bon-soleil</a> — Built with <i class="fas fa-paw"></i> by Teddy</p>
+</footer>
+
+</body>
+</html>
