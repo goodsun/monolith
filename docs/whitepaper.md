@@ -1,6 +1,6 @@
 # Monolith: Visual Structure Grounding for Grammar-Free Language Learning
 
-**A Symbol Emergence Approach to Structural English Visualization**
+**Perceptual Scaffolding Inspired by Symbol Emergence Systems**
 
 ---
 
@@ -13,7 +13,7 @@
 
 ## Abstract
 
-We present Monolith, a web-based tool that visualizes English sentence structure using color-coded nested blocks without any grammar terminology. Traditional language education relies on metalinguistic labels (e.g., "subject," "relative pronoun") to explain structure—a multi-step indirect reference process that conflicts with the cognitive strengths of visual-spatial learners. Drawing on Symbol Emergence Systems theory (Taniguchi, 2016), Monolith replaces this label-mediated approach with direct visual grounding: syntactic roles are mapped to colors, and hierarchical clause nesting is rendered as block containment. AI (Gemini) handles parsing; the learner simply *experiences* the structure. We argue that this constitutes a practical application of symbol emergence in education, and that embracing the non-idempotent nature of natural language—rather than forcing a single "correct" parse—leads to more authentic language understanding.
+We present Monolith, a web-based tool that visualizes English sentence structure using color-coded nested blocks without any grammar terminology. Traditional language education relies on metalinguistic labels (e.g., "subject," "relative pronoun") to explain structure—a multi-step indirect reference process that conflicts with the cognitive strengths of visual-spatial learners. Drawing on Symbol Emergence Systems theory (Taniguchi, 2016), Monolith replaces this label-mediated approach with direct visual grounding: syntactic roles are mapped to colors, and hierarchical clause nesting is rendered as block containment. AI (Gemini) handles parsing; the learner simply *experiences* the structure. We argue that this draws inspiration from Symbol Emergence Systems theory to create perceptual scaffolding, and that embracing the non-idempotent nature of natural language—rather than forcing a single "correct" parse—leads to more authentic language understanding.
 
 **Keywords:** Symbol Emergence, Visual Structure Grounding, Grammar-Free Learning, Non-Idempotent Natural Language, Cognitive Adaptation, AGI-era Education
 
@@ -44,16 +44,24 @@ Conventional English education explains structure through grammar terminology: "
 3. When reading English, recall the relevant term
 4. Apply the term's definition to understand structure
 
-This process is cognitively expensive and particularly ill-suited for learners with strong visual-spatial processing (high PRI on WAIS-IV), who would benefit more from direct perceptual pattern recognition.
+This process is cognitively expensive and particularly ill-suited for learners with strong visual-spatial processing ability, who would benefit more from direct perceptual pattern recognition.
 
 ### 1.3 Contribution
 
 Monolith eliminates the grammar terminology layer entirely, replacing it with a visual encoding system based on color and spatial nesting. Our key contributions are:
 
 1. **A grammar-free visualization system** mapping syntactic roles to colors and clause hierarchy to block nesting
-2. **Practical application of symbol emergence theory** to language education
+2. **Educational framework inspired by symbol emergence theory** creating perceptual scaffolding for structural understanding
 3. **Honest treatment of linguistic non-idempotency** as a pedagogical feature rather than a defect
 4. **AI-powered parsing** that removes the prerequisite of grammar knowledge from structural understanding
+
+### 1.4 Research Hypotheses
+
+**H1 (Visual Grounding):** Color-coded structural visualization enables faster structural pattern recognition than grammar-terminology-based instruction for learners with strong visual-spatial cognitive preference.
+
+**H2 (Non-Idempotency Awareness):** Exposing learners to multiple valid parses of the same sentence promotes deeper structural understanding compared to single-parse instruction.
+
+**H3 (Grammar-Free Acquisition):** Learners can acquire functional structural intuition (measured by sentence construction accuracy) without explicit grammar terminology instruction, through sustained interaction with Monolith's visual representations.
 
 ---
 
@@ -69,11 +77,13 @@ Sentence diagrams (Reed-Kellogg) and parse trees (Chomsky) provide visual repres
 
 ### 2.3 Symbol Emergence Systems
 
-Taniguchi (2016) proposes that symbols (including language) emerge through bodily interaction with the environment rather than being assigned top-down. This framework suggests that language learning should leverage embodied experience—perception, action, spatial cognition—rather than symbol-to-symbol mapping.
+Taniguchi (2016) proposes that symbols (including language) emerge through bodily interaction with the environment rather than being assigned top-down. This framework connects to the broader tradition of Embodied Cognition (Varela et al., 1991), which argues that cognition is fundamentally grounded in bodily experience rather than abstract symbol manipulation. The Enactive Approach suggests that understanding emerges through direct interaction with the environment—a principle that bridges SES theory and educational design.
+
+Monolith draws inspiration from this lineage: where SES demonstrates how symbols emerge from embodied interaction with the environment, and Embodied Cognition shows that knowledge is rooted in physical experience, Monolith translates these insights into language education by converting abstract linguistic structures into visual-spatial experiences—transforming grammar from symbol-to-symbol mapping into direct perceptual engagement.
 
 ### 2.4 Cognitive Profiles and Learning
 
-WAIS-IV assessments reveal that individuals with high PRI (Perceptual Reasoning Index) process information most efficiently through visual-spatial channels. A learner with PRI:130 and VCI:108 would find color-pattern recognition far more natural than terminology memorization (Wechsler, 2008).
+Cognitive assessments reveal that individuals with strong visual-spatial processing abilities process information most efficiently through visual-spatial channels. Learners whose visual-spatial ability significantly exceeds their verbal reasoning would find color-pattern recognition far more natural than terminology memorization (Wechsler, 2008).
 
 ---
 
@@ -199,22 +209,22 @@ Monolith:     English → Color/Block Pattern → Understanding
 
 By bypassing the metalinguistic intermediate layer, Monolith enables what we term **Visual Structure Grounding**—direct perceptual access to syntactic meaning.
 
-### 4.2 Symbol Emergence in Practice
+### 4.2 Symbol Emergence as Inspiration
 
-Following Taniguchi's framework, symbols should *emerge* from bodily experience rather than being imposed from above. Monolith facilitates this by:
+Monolith does not implement symbol emergence itself but rather translates the core insight from SES theory—that direct perceptual experience enables understanding—into educational practice. Where SES demonstrates symbols emerging from embodied interaction, Monolith creates structured perceptual experiences that facilitate pattern recognition:
 
 1. Providing repeated exposure to color patterns across diverse sentences
 2. Allowing the structural "meaning" of each color to emerge naturally through experience
 3. Never explicitly teaching what each color "means" in grammatical terms
 
-The learner's understanding of "blue = the thing doing the action" emerges from seeing blue consistently associated with agents across hundreds of sentences—not from reading a definition.
+The learner's understanding of "blue = the thing doing the action" emerges from seeing blue consistently associated with agents across hundreds of sentences—not from reading a definition. This represents an application of the SES-inspired principle that understanding develops through direct perceptual engagement rather than symbolic explanation.
 
 ### 4.3 Cognitive Adaptation
 
-For learners with high visual-spatial processing ability (PRI), Monolith aligns the learning channel with cognitive strengths:
+For learners with strong visual-spatial cognitive preference, Monolith aligns the learning channel with cognitive strengths:
 
-- ❌ Grammar term memorization → linguistic processing (WMI/VCI dependent)
-- ✓ Color-block pattern recognition → visual processing (PRI leveraged)
+- ❌ Grammar term memorization → linguistic processing (verbal reasoning dependent)
+- ✓ Color-block pattern recognition → visual processing (visual-spatial ability leveraged)
 
 This represents a form of Universal Design in language education: providing a visual-first channel that complements the traditional verbal-first approach.
 
@@ -248,6 +258,15 @@ This is the antithesis of mass-produced education: **AGI-era personalized learni
 
 Programming languages are idempotent: the same code always produces the same result. Traditional grammar education implicitly assumes natural language shares this property—that every sentence has one "correct" parse.
 
+Formally, we can define this distinction:
+
+```
+Let f: S → T be a parsing function mapping sentence s ∈ S to parse tree t ∈ T.
+
+In programming languages:    f(s) = f(s)    (idempotent — deterministic)
+In natural language with AI: f(s) ≠ f(s)    (non-idempotent — stochastic)
+```
+
 Natural language is fundamentally non-idempotent:
 
 ```
@@ -257,6 +276,8 @@ Natural language is fundamentally non-idempotent:
 ```
 
 Both parses are grammatically valid. Context determines meaning—and sometimes context is insufficient.
+
+This non-idempotency extends beyond structural ambiguity. While structural ambiguity represents static properties of language (a sentence having multiple valid interpretations), non-idempotency in AI-powered parsing introduces dynamic stochastic elements—the same input may yield different results due to the parser's temperature parameters and sampling processes. Monolith treats both dimensions honestly: the inherent ambiguity of natural language and the additional variance introduced by AI parsing.
 
 ### 6.2 Embracing Ambiguity
 
@@ -355,11 +376,11 @@ We propose a controlled study comparing three groups:
 
 ### 9.2 Cognitive Profile Correlation
 
-For each participant, WAIS-IV subscores (VCI, PRI, WMI, PSI) would be collected (or approximated via shorter instruments) to analyze:
+For each participant, cognitive assessments measuring visual-spatial processing and verbal reasoning abilities would be collected as optional supplementary measures (e.g., WAIS-IV subscores or approximated via shorter instruments) to analyze:
 
-- Does high PRI predict greater benefit from Monolith?
-- Does the gap between PRI and VCI predict preference for visual vs. verbal instruction?
-- Is there a threshold PRI score above which Monolith becomes decisively more effective?
+- Does strong visual-spatial cognitive preference predict greater benefit from Monolith?
+- Does the gap between visual-spatial and verbal abilities predict preference for visual vs. verbal instruction?
+- Is there a threshold visual-spatial ability above which Monolith becomes decisively more effective?
 
 ### 9.3 Non-Idempotency Study
 
@@ -405,7 +426,7 @@ While designed for English learning by Japanese speakers, the color-block approa
 Monolith demonstrates that grammar terminology is not a prerequisite for structural understanding. By replacing metalinguistic labels with color and spatial nesting, the tool provides a **visual-first pathway** to English structure that:
 
 1. Eliminates the multi-step indirect reference of traditional grammar instruction
-2. Leverages visual-spatial cognition (PRI) for more natural pattern acquisition
+2. Leverages visual-spatial cognition for more natural pattern acquisition
 3. Applies symbol emergence theory to create direct structure-meaning grounding
 4. Treats linguistic ambiguity honestly as a feature of natural language
 5. Enables intrinsic-motivation-driven, infinitely personalized learning
@@ -419,11 +440,12 @@ The tool's philosophy—**to convey without speaking**—extends from its interf
 ## References
 
 1. Harnad, S. (1990). The Symbol Grounding Problem. *Physica D*, 42(1-3), 335-346.
-2. Krashen, S. (1982). *Principles and Practice in Second Language Acquisition*. Pergamon Press.
-3. Taniguchi, T. (2016). *Symbol Emergence in Robotics*. Springer.
-4. Wechsler, D. (2008). *Wechsler Adult Intelligence Scale—Fourth Edition (WAIS-IV)*. Pearson.
-5. Kubrick, S. (Director). (1968). *2001: A Space Odyssey* [Film]. Metro-Goldwyn-Mayer.
-6. Kawashima, C., & Teddy. (2026). Monolith — Structural English Visualizer. GitHub. https://github.com/goodsun/monolith
+2. Kawashima, C., & Teddy. (2026). Monolith — Structural English Visualizer. GitHub. https://github.com/goodsun/monolith
+3. Krashen, S. (1982). *Principles and Practice in Second Language Acquisition*. Pergamon Press.
+4. Kubrick, S. (Director). (1968). *2001: A Space Odyssey* [Film]. Metro-Goldwyn-Mayer.
+5. Taniguchi, T. (2016). *Symbol Emergence in Robotics*. Springer.
+6. Varela, F. J., Thompson, E., & Rosch, E. (1991). *The Embodied Mind: Cognitive Science and Human Experience*. MIT Press.
+7. Wechsler, D. (2008). *Wechsler Adult Intelligence Scale—Fourth Edition (WAIS-IV)*. Pearson.
 
 ---
 
