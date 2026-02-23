@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monolith — Structural English Visualizer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -129,14 +130,14 @@
     transition: opacity 0.15s;
     display: inline;
   }
-  .role-S::before  { content: '🧑'; }
-  .role-V::before  { content: '⚡'; }
-  .role-O::before  { content: '🎯'; }
-  .role-C::before  { content: '🪞'; }
-  .role-M::before  { content: '📍'; }
-  .role-CONJ::before { content: '🔸'; }
-  .role-REL::before  { content: '🔗'; }
-  .role-SUB::before  { content: '📦'; }
+  .role-S::before  { content: '\f007'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+  .role-V::before  { content: '\f0e7'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+  .role-O::before  { content: '\f140'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+  .role-C::before  { content: '\f52c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+  .role-M::before  { content: '\f3c5'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+  .role-CONJ::before { content: '\f219'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+  .role-REL::before  { content: '\f0c1'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+  .role-SUB::before  { content: '\f466'; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
   .shift-mode::before { opacity: 0.9; }
 
   /* Role colors — no labels, only colors speak */
@@ -241,7 +242,38 @@
     align-items: center;
     gap: 6px;
     font-size: 0.8rem;
+    position: relative;
+    cursor: pointer;
   }
+
+  .legend-item .legend-tip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #111;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    width: 270px;
+    white-space: normal;
+    z-index: 200;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+  .legend-item .legend-tip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #fff;
+  }
+  .legend-item:hover .legend-tip { display: block; }
 
   .legend-dot {
     width: 12px;
@@ -301,14 +333,14 @@
 <div class="result-area" id="result"></div>
 
 <div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:#4a9eff"></div><span class="leg-normal">Subject</span><span class="leg-shift">🧑 誰が</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div><span class="leg-normal">Verb</span><span class="leg-shift">⚡ どうする</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#51cf66"></div><span class="leg-normal">Object</span><span class="leg-shift">🎯 何を</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ffd43b"></div><span class="leg-normal">Complement</span><span class="leg-shift">🪞 ＝何</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#b197fc"></div><span class="leg-normal">Modifier</span><span class="leg-shift">📍 いつ・どこ</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#20c997"></div><span class="leg-normal">Clause</span><span class="leg-shift">📦 文の中の文</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ff922b"></div><span class="leg-normal">Relative</span><span class="leg-shift">🔗 説明する文</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#868e96"></div><span class="leg-normal">Conjunction</span><span class="leg-shift">🔸 つなぎ</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#4a9eff"></div><span class="leg-normal">Subject</span><span class="leg-shift"><i class="fas fa-user"></i> 誰が</span><span class="legend-tip">Subject（主語）— 文の主役。「誰が」「何が」動作するのか。英語は必ずここから始まる。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div><span class="leg-normal">Verb</span><span class="leg-shift"><i class="fas fa-bolt"></i> どうする</span><span class="legend-tip">Verb（動詞）— 文の心臓。主語が「何をする」のか。これがないと文にならない。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#51cf66"></div><span class="leg-normal">Object</span><span class="leg-shift"><i class="fas fa-bullseye"></i> 何を</span><span class="legend-tip">Object（目的語）— 動作の受け手。「何を」「誰を」。動詞の力が向かう先。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ffd43b"></div><span class="leg-normal">Complement</span><span class="leg-shift"><i class="fas fa-equals"></i> ＝何</span><span class="legend-tip">Complement（補語）— イコールの関係。She is a doctor. の「a doctor」のように、主語＝何かを示す。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#b197fc"></div><span class="leg-normal">Modifier</span><span class="leg-shift"><i class="fas fa-location-dot"></i> いつ・どこ</span><span class="legend-tip">Modifier（修飾語句）— 追加情報。いつ・どこで・どうやって。なくても文は成り立つが、意味が豊かになる。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#20c997"></div><span class="leg-normal">Clause</span><span class="leg-shift"><i class="fas fa-box"></i> 文の中の文</span><span class="legend-tip">Subordinate Clause（従属節）— 「〜ということ」「〜なので」。文の中にもう一つの文が入る入れ子構造。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff922b"></div><span class="leg-normal">Relative</span><span class="leg-shift"><i class="fas fa-link"></i> 説明する文</span><span class="legend-tip">Relative Clause（関係詞節）— 「〜するところの」。名詞を後ろから説明する文。英語が前から後ろに伸びる感覚の正体。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#868e96"></div><span class="leg-normal">Conjunction</span><span class="leg-shift"><i class="fas fa-diamond"></i> つなぎ</span><span class="legend-tip">Conjunction（接続詞）— つなぎ言葉。that, which, because, and など。ブロックとブロックをつなぐ接着剤。</span></div>
 </div>
 
 <div class="history" id="history"></div>
