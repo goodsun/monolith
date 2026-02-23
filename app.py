@@ -85,7 +85,7 @@ The explanation should be in Japanese, 2-3 sentences, covering:
 - What sentence pattern/structure is used (e.g. SVO, SVOC, there-construction, passive, etc.)
 - Notable nesting or clause relationships
 - Why this structure works (what nuance it conveys)
-Do NOT use grammar jargon — explain using Monolith's color/block metaphors (e.g. "赤ブロック(動詞)の後に緑の入れ子(従属節)が続く構造").
+Do NOT use grammar jargon — explain using Monolith's color/block metaphors (e.g. "赤ブロック(動詞)の後に青緑の入れ子(従属節)が続く構造"). Color mapping: S=blue, V=red, O=yellow, C=green (green = blue+yellow, because complement refers to the same thing as the subject), M=purple, REL=orange, SUB=teal, CONJ=gray.
 
 Parse this:
 """
@@ -151,15 +151,23 @@ def parse():
         prompt += "\n[explain=true]\n"
 
     try:
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=prompt + sentence,
-        )
-        raw = response.text.strip()
-        # Strip markdown fences if present
-        raw = re.sub(r'^```json\s*', '', raw)
-        raw = re.sub(r'\s*```\s*$', '', raw)
-        parsed = json.loads(raw)
+        parsed = None
+        for attempt in range(2):
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt + sentence,
+            )
+            raw = response.text.strip()
+            # Strip markdown fences if present
+            raw = re.sub(r'^```json\s*', '', raw)
+            raw = re.sub(r'\s*```\s*$', '', raw)
+            try:
+                parsed = json.loads(raw)
+                break
+            except json.JSONDecodeError:
+                print(f"[JSON ERROR attempt {attempt+1}] raw: {raw[:300]}", flush=True)
+                if attempt == 1:
+                    raise
 
         # Normalize response format
         if isinstance(parsed, dict) and "sentences" in parsed:
@@ -169,6 +177,7 @@ def parse():
         else:
             return jsonify({"sentences": [{"text": sentence, "blocks": parsed}]})
     except json.JSONDecodeError:
+        print(f"[JSON ERROR] raw response: {raw[:500]}", flush=True)
         return jsonify({"error": "AI response was not valid JSON. Please try again."}), 500
     except Exception as e:
         return jsonify({"error": str(e)}), 500

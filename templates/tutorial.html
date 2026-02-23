@@ -135,6 +135,29 @@ body {
   margin-top: 0.25rem;
 }
 
+/* Nested block (block inside block) */
+.block-nest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  gap: 0.4rem;
+}
+.block-nest .blocks-inner {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.block-nest .blocks-inner .block {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  opacity: 0;
+}
+.block-nest .blocks-inner .block .block-en { font-size: 1rem; }
+.block-nest .blocks-inner .block .block-ja { font-size: 0.75rem; }
+
 .block.s { border-color: var(--blue); background: rgba(91,143,185,0.1); }
 .block.s .block-en { color: var(--blue); }
 .block.s .block-ja { color: rgba(91,143,185,0.7); }
@@ -143,13 +166,13 @@ body {
 .block.v .block-en { color: var(--red); }
 .block.v .block-ja { color: rgba(199,80,80,0.7); }
 
-.block.o { border-color: var(--green); background: rgba(91,165,91,0.1); }
-.block.o .block-en { color: var(--green); }
-.block.o .block-ja { color: rgba(91,165,91,0.7); }
+.block.o { border-color: var(--yellow); background: rgba(199,168,64,0.1); }
+.block.o .block-en { color: var(--yellow); }
+.block.o .block-ja { color: rgba(199,168,64,0.7); }
 
-.block.c { border-color: var(--yellow); background: rgba(199,168,64,0.1); }
-.block.c .block-en { color: var(--yellow); }
-.block.c .block-ja { color: rgba(199,168,64,0.7); }
+.block.c { border-color: var(--green); background: rgba(91,165,91,0.1); }
+.block.c .block-en { color: var(--green); }
+.block.c .block-ja { color: rgba(91,165,91,0.7); }
 
 .block.m { border-color: var(--purple); background: rgba(155,110,181,0.1); }
 .block.m .block-en { color: var(--purple); }
@@ -273,7 +296,7 @@ body.shift-active .school-hint {
   </div>
 
   <div class="insight">
-    <strong style="color:var(--blue)">青</strong> = 誰が　　<strong style="color:var(--red)">赤</strong> = どうした　　<strong style="color:var(--green)">緑</strong> = 何を<br>
+    <strong style="color:var(--blue)">青</strong> = 誰が　　<strong style="color:var(--red)">赤</strong> = どうした　　<strong style="color:var(--yellow)">黄</strong> = 何を<br>
     これだけ。これが英語の骨格です。
   </div>
 </div>
@@ -292,7 +315,7 @@ body.shift-active .school-hint {
       </div>
       <div class="block v" data-delay="400">
         <span class="block-en">kicked</span>
-        <span class="block-ja">蹴った</span>
+        <span class="block-ja">蹴ったんだ</span>
       </div>
       <div class="block o" data-delay="800">
         <span class="block-en">the ball</span>
@@ -305,7 +328,7 @@ body.shift-active .school-hint {
     <div class="blocks" id="blocks2b">
       <div class="block s" data-delay="0">
         <span class="block-en">My sister</span>
-        <span class="block-ja">姉が</span>
+        <span class="block-ja">わたしの妹が</span>
       </div>
       <div class="block v" data-delay="400">
         <span class="block-en">plays</span>
@@ -319,9 +342,9 @@ body.shift-active .school-hint {
   </div>
 
   <div class="insight">
-    <strong><span style="color:var(--blue)">青</span> → <span style="color:var(--red)">赤</span> → <span style="color:var(--green)">緑</span>。いつも同じ順番。</strong><br>
+    <strong><span style="color:var(--blue)">青</span> → <span style="color:var(--red)">赤</span> → <span style="color:var(--yellow)">黄</span>。いつも同じ順番。</strong><br>
     主語が1単語でも2単語でも、色は変わりません。<br>
-    英語は「<span style="color:var(--blue)">誰が</span> → <span style="color:var(--red)">どうした</span> → <span style="color:var(--green)">何を</span>」の順番で並ぶ言語。日本語とは逆ですね。
+    英語は「<span style="color:var(--blue)">誰が</span> → <span style="color:var(--red)">どうした</span> → <span style="color:var(--yellow)">何を</span>」の順番で並ぶ言語。日本語とは逆ですね。
   </div>
 </div>
 
@@ -329,7 +352,7 @@ body.shift-active .school-hint {
 <div class="step" id="step3">
   <span class="step-number">Step 3</span>
   <h2>8つの色を知ろう</h2>
-  <p>英語のすべての文は、この8色の組み合わせでできています。<br>まずは<span style="color:var(--blue)">青</span>・<span style="color:var(--red)">赤</span>・<span style="color:var(--green)">緑</span>だけ覚えれば大丈夫。残りは使ううちに自然とわかります。</p>
+  <p>英語のすべての文は、この8色の組み合わせでできています。<br>まずは<span style="color:var(--blue)">青</span>・<span style="color:var(--red)">赤</span>・<span style="color:var(--yellow)">黄</span>だけ覚えれば大丈夫。残りは使ううちに自然とわかります。</p>
 
   <!-- 青 = S -->
   <h3 style="color:var(--blue); margin-top:2rem;"><i class="fas fa-star" style="margin-right:0.3em"></i> 青 — 誰が</h3>
@@ -337,7 +360,7 @@ body.shift-active .school-hint {
   <div class="sentence-demo">
     <div class="blocks" id="blocks3-s">
       <div class="block s" data-delay="0"><span class="block-en">I</span><span class="block-ja">わたしは</span></div>
-      <div class="block v" data-delay="300"><span class="block-en">run</span><span class="block-ja">走る</span></div>
+      <div class="block v" data-delay="300"><span class="block-en">run</span><span class="block-ja">走るんだ</span></div>
     </div>
   </div>
   <div class="insight">
@@ -352,34 +375,35 @@ body.shift-active .school-hint {
   <div class="sentence-demo">
     <div class="blocks" id="blocks3-v">
       <div class="block s" data-delay="0"><span class="block-en">She</span><span class="block-ja">彼女は</span></div>
-      <div class="block v" data-delay="300"><span class="block-en">sings</span><span class="block-ja">歌う</span></div>
+      <div class="block v" data-delay="300"><span class="block-en">sings</span><span class="block-ja">歌うんだよ</span></div>
     </div>
   </div>
   <div class="insight">
     マークは<strong style="color:var(--red)"><i class="fas fa-car"></i> 車</strong>。文を前に動かすエンジン。<br>
     <span class="school-hint">学校では「動詞」と習ったかもしれない。覚えなくていい。赤い車を探せばいい。</span><br>
-    <span style="color:var(--blue)">青</span>（誰が）の次に来るのが<span style="color:var(--red)">赤</span>（どうした）。この2つだけで文は成り立ちます。
+    <span style="color:var(--blue)">青</span>（誰が）の次に来るのが<span style="color:var(--red)">赤</span>（どうした）。この2つだけで文は成り立ちます。<br>
+    <strong>💡 コツ：</strong><span style="color:var(--red)">赤</span>を訳すとき、現在形なら「<span style="color:var(--red)">〜だよ</span>」、過去形なら「<span style="color:var(--red)">〜だったんだ</span>」をつけると話し言葉になってわかりやすい。
   </div>
 
   <!-- 緑 = O -->
-  <h3 style="color:var(--green); margin-top:2rem;"><i class="fas fa-crosshairs" style="margin-right:0.3em"></i> 緑 — 何を</h3>
-  <p>動作の相手。「<span style="color:var(--green)">何を</span>」「<span style="color:var(--green)">誰を</span>」にあたる部分です。</p>
+  <h3 style="color:var(--yellow); margin-top:2rem;"><i class="fas fa-crosshairs" style="margin-right:0.3em"></i> 黄 — 何を</h3>
+  <p>動作の相手。「<span style="color:var(--yellow)">何を</span>」「<span style="color:var(--yellow)">誰を</span>」にあたる部分です。</p>
   <div class="sentence-demo">
     <div class="blocks" id="blocks3-o">
       <div class="block s" data-delay="0"><span class="block-en">He</span><span class="block-ja">彼は</span></div>
-      <div class="block v" data-delay="300"><span class="block-en">kicked</span><span class="block-ja">蹴った</span></div>
+      <div class="block v" data-delay="300"><span class="block-en">kicked</span><span class="block-ja">蹴ったんだ</span></div>
       <div class="block o" data-delay="600"><span class="block-en">the ball</span><span class="block-ja">ボールを</span></div>
     </div>
   </div>
   <div class="insight">
-    マークは<strong style="color:var(--green)"><i class="fas fa-crosshairs"></i> 的</strong>。動作が向かう先、ターゲット。<br>
-    <span class="school-hint">学校では「目的語」と習ったかもしれない。覚えなくていい。赤の動きが当たる緑の的。</span><br>
-    蹴る→ボール。食べる→りんご。<span style="color:var(--red)">赤</span>の動きが「当たる」相手が<span style="color:var(--green)">緑</span>です。
+    マークは<strong style="color:var(--yellow)"><i class="fas fa-crosshairs"></i> 的</strong>。動作が向かう先、ターゲット。<br>
+    <span class="school-hint">学校では「目的語」と習ったかもしれない。覚えなくていい。赤の動きが当たる黄色の的。</span><br>
+    <span style="color:var(--red)">蹴る</span>→<span style="color:var(--yellow)">ボール</span>。<span style="color:var(--red)">食べる</span>→<span style="color:var(--yellow)">りんご</span>。<span style="color:var(--red)">赤</span>の動きが「当たる」相手が<span style="color:var(--yellow)">黄</span>です。
   </div>
 
   <!-- 黄 = C -->
-  <h3 style="color:var(--yellow); margin-top:2rem;"><i class="fas fa-scale-balanced" style="margin-right:0.3em"></i> 黄 — ＝（イコール）</h3>
-  <p>（ほぼ）あの忌々しい "be動詞" のためだけに存在する色。<br>「<span style="color:var(--yellow)">〜は…だ</span>」「<span style="color:var(--yellow)">〜は…である</span>」。動作じゃない。ただの「<span style="color:var(--yellow)">＝</span>」。</p>
+  <h3 style="color:var(--green); margin-top:2rem;"><i class="fas fa-scale-balanced" style="margin-right:0.3em"></i> 緑 — ＝（イコール）</h3>
+  <p><span style="color:var(--red)">赤</span>が「＝」になることがある。あの忌々しい "<span style="color:var(--red)">be動詞</span>"。<br>そのとき、<span style="color:var(--red)">赤</span>のとなりは<span style="color:var(--yellow)">黄</span>じゃなくて<span style="color:var(--green)">緑</span>に変わる。<br><span style="color:var(--blue)">青</span>（誰が）と同じものを指してるから、<span style="color:var(--blue)">青</span>＋<span style="color:var(--yellow)">黄</span>＝<span style="color:var(--green)">緑</span>。</p>
   <div class="sentence-demo">
     <div class="blocks" id="blocks3-c">
       <div class="block s" data-delay="0"><span class="block-en">The sky</span><span class="block-ja">空は</span></div>
@@ -388,9 +412,9 @@ body.shift-active .school-hint {
     </div>
   </div>
   <div class="insight">
-    マークは<strong style="color:var(--yellow)"><i class="fas fa-scale-balanced"></i> 天秤</strong>。左と右が釣り合う＝イコール。<br>
-    <span class="school-hint">学校では「補語」と習ったかもしれない。覚えなくていい。あの忌々しいbe動詞の相棒。</span><br>
-    <span style="color:var(--green)">緑</span>は「何かをする」相手、黄色は「何かである」説明。蹴るボールがあれば<span style="color:var(--green)">緑</span>。ただの「＝」なら黄色。
+    マークは<strong style="color:var(--green)"><i class="fas fa-scale-balanced"></i> 天秤</strong>。左と右が釣り合う＝イコール。<br>
+    <span style="color:var(--blue)">He</span> <span style="color:var(--red)">kicked</span> <span style="color:var(--yellow)">the ball</span> → <span style="color:var(--red)">赤</span>は動作。となりは<span style="color:var(--yellow)">黄</span>（何を）。<br>
+    <span style="color:var(--blue)">The sky</span> <span style="color:var(--red)">is</span> <span style="color:var(--green)">blue</span> → <span style="color:var(--red)">赤</span>が＝。となりは<span style="color:var(--green)">緑</span>に変わる。
   </div>
 
   <!-- 紫 = M -->
@@ -407,7 +431,7 @@ body.shift-active .school-hint {
   <div class="insight">
     マークは<strong style="color:var(--purple)"><i class="fas fa-gem"></i> 宝石</strong>。文に輝きを添えるアクセサリー。<br>
     <span class="school-hint">学校では「修飾語」と習ったかもしれない。覚えなくていい。なくても文は成り立つ。</span><br>
-    紫を取り除いても "She drinks coffee" で通じる。でも紫があると情景が浮かぶ。
+    <span style="color:var(--purple)">紫</span>を取り除いても "She drinks coffee" で通じる。でも<span style="color:var(--purple)">紫</span>があると情景が浮かぶ。
   </div>
 
   <!-- 橙 = REL -->
@@ -416,15 +440,21 @@ body.shift-active .school-hint {
   <div class="sentence-demo">
     <div class="blocks" id="blocks3-rel">
       <div class="block s" data-delay="0"><span class="block-en">The book</span><span class="block-ja">その本は</span></div>
-      <div class="block o" data-delay="300" style="border-color:var(--orange);background:rgba(212,133,64,0.1);"><span class="block-en" style="color:var(--orange);">that I bought</span><span class="block-ja" style="color:rgba(212,133,64,0.7);">（わたしが買ったやつ）</span></div>
-      <div class="block v" data-delay="600"><span class="block-en">was</span><span class="block-ja">だった</span></div>
-      <div class="block c" data-delay="900"><span class="block-en">interesting</span><span class="block-ja">面白い</span></div>
+      <div class="block-nest" data-delay="300" style="border:2px solid var(--orange); border-radius:8px; background:rgba(212,133,64,0.1); opacity:0; transform:scale(0.8); transition:opacity 0.5s ease, transform 0.5s ease;">
+        <div class="blocks-inner">
+          <div class="block s" data-delay="500"><span class="block-en">that I</span><span class="block-ja">わたしが</span></div>
+          <div class="block v" data-delay="700"><span class="block-en">bought</span><span class="block-ja">買った</span></div>
+        </div>
+      </div>
+      <div class="block v" data-delay="900"><span class="block-en">was</span><span class="block-ja">だったんだ</span></div>
+      <div class="block c" data-delay="1100"><span class="block-en">interesting</span><span class="block-ja">面白い</span></div>
     </div>
   </div>
   <div class="insight">
     マークは<strong style="color:var(--orange)"><i class="fas fa-layer-group"></i> 重なり</strong>。文の中にもう一つの情報が重なっている。<br>
     <span class="school-hint">学校では「関係詞節」とか習わされたが、覚えなくていい。括弧の感覚でOK。</span><br>
-    橙は括弧のイメージ。"The book <strong style="color:var(--orange)">（わたしが買ったやつ）</strong>" ——メインの文に補足説明をくっつける色です。
+    橙は括弧のイメージ。"The book <strong style="color:var(--orange)">（わたしが買ったやつ）</strong>" ——メインの文に補足説明をくっつける色です。<br>
+    <span style="color:var(--orange)">橙</span>の中には別のブロック（<span style="color:var(--blue)">青</span>や<span style="color:var(--red)">赤</span>や<span style="color:var(--yellow)">黄</span>）が入ります。括弧の中にもう一つの文があるイメージ。
   </div>
 
   <!-- 青緑 = SUB -->
@@ -432,20 +462,32 @@ body.shift-active .school-hint {
   <p>「<span style="color:var(--teal)">〜ので</span>」「<span style="color:var(--teal)">〜のとき</span>」「<span style="color:var(--teal)">もし〜なら</span>」。理由や条件を添える。</p>
   <div class="sentence-demo">
     <div class="blocks" id="blocks3-sub">
-      <div class="block s" data-delay="0" style="border-color:var(--teal);background:rgba(74,154,138,0.1);"><span class="block-en" style="color:var(--teal);">Because it rained</span><span class="block-ja" style="color:rgba(74,154,138,0.7);">雨が降ったので</span></div>
-      <div class="block s" data-delay="400"><span class="block-en">we</span><span class="block-ja">私たちは</span></div>
-      <div class="block v" data-delay="700"><span class="block-en">stayed</span><span class="block-ja">いた</span></div>
-      <div class="block m" data-delay="1000"><span class="block-en">home</span><span class="block-ja">家に</span></div>
+      <div class="block-nest" data-delay="0" style="border:2px solid var(--teal); border-radius:8px; background:rgba(74,154,138,0.1); opacity:0; transform:scale(0.8); transition:opacity 0.5s ease, transform 0.5s ease;">
+        <div class="blocks-inner">
+          <div class="block m" data-delay="200"><span class="block-en">Because</span><span class="block-ja">〜ので</span></div>
+          <div class="block s" data-delay="400"><span class="block-en">it</span><span class="block-ja">それが</span></div>
+          <div class="block v" data-delay="600"><span class="block-en">rained</span><span class="block-ja">降ったんだ</span></div>
+        </div>
+      </div>
+      <div class="block s" data-delay="800"><span class="block-en">we</span><span class="block-ja">私たちは</span></div>
+      <div class="block v" data-delay="1000"><span class="block-en">stayed</span><span class="block-ja">いたんだ</span></div>
+      <div class="block m" data-delay="1200"><span class="block-en">home</span><span class="block-ja">家に</span></div>
     </div>
   </div>
   <div class="insight">
     マークは<strong style="color:var(--teal)"><i class="fas fa-handshake"></i> 握手</strong>。メインの文と手をつなぐサブの文。<br>
     <span class="school-hint">学校では「従属節」と習ったかもしれない。中身はただの文。日本ではあまり言い訳がましいと嫌われます。</span><br>
-    青緑のかたまりは、それ自体が一つの文。メインの文に「理由」や「条件」をくっつけます。
+    <span style="color:var(--teal)">青緑</span>のかたまりは、それ自体が一つの文。メインの文に「理由」や「条件」をくっつけます。<br>
+    <span style="color:var(--orange)">橙</span>と同じく、中には別のブロック（<span style="color:var(--blue)">青</span>・<span style="color:var(--red)">赤</span>・<span style="color:var(--yellow)">黄</span>…）が入ります。
+  </div>
+  <div class="insight" style="border-left-color: #666;">
+    <strong><span style="color:var(--orange)">橙</span> と <span style="color:var(--teal)">青緑</span> の違い：</strong><br>
+    <span style="color:var(--orange)">橙</span> = <strong>言葉</strong>にくっつく。「わたしが買った<strong>本</strong>」——どんな本？を説明する。<br>
+    <span style="color:var(--teal)">青緑</span> = <strong>文</strong>にくっつく。「雨が降ったので、<strong>家にいた</strong>」——なぜ？いつ？を説明する。
   </div>
 
   <!-- 灰 = CONJ -->
-  <h3 style="color:var(--gray); margin-top:2rem;"><i class="fas fa-link" style="margin-right:0.3em"></i> 灰 — 接着剤</h3>
+  <h3 style="color:var(--gray); margin-top:2rem;"><i class="fas fa-link" style="margin-right:0.3em"></i> 灰色 — 鎖</h3>
   <p>「<span style="color:var(--gray)">と</span>」「<span style="color:var(--gray)">しかし</span>」「<span style="color:var(--gray)">そして</span>」。文と文、言葉と言葉をくっつける。</p>
   <div class="sentence-demo">
     <div class="blocks" id="blocks3-conj">
@@ -457,9 +499,7 @@ body.shift-active .school-hint {
     </div>
   </div>
   <div class="insight">
-    マークは<strong style="color:var(--gray)"><i class="fas fa-link"></i> 鎖</strong>。ものとものをつなぐ接着剤。<br>
-    <span class="school-hint">学校では「接続詞」と習ったかもしれない。覚えなくていい。and, but, because。</span><br>
-    灰色は自分では意味を持たない。ただ、左と右をくっつけるだけ。シンプルだけど大事な役割。
+    マークは<strong style="color:var(--gray)"><i class="fas fa-link"></i> 鎖</strong>。物と物をくっつける。
   </div>
 </div>
 
@@ -481,13 +521,13 @@ body.shift-active .school-hint {
         <div style="color:var(--text-light);font-size:0.85rem;">どうした</div>
       </div>
       <div>
-        <div style="width:48px;height:48px;border-radius:50%;background:var(--green);margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center;"><i class="fas fa-crosshairs" style="color:#fff;font-size:1rem;"></i></div>
-        <div style="font-weight:600;color:var(--green);">緑 <i class="fas fa-crosshairs" style="font-size:0.7rem"></i></div>
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--yellow);margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center;"><i class="fas fa-crosshairs" style="color:#fff;font-size:1rem;"></i></div>
+        <div style="font-weight:600;color:var(--yellow);">黄 <i class="fas fa-crosshairs" style="font-size:0.7rem"></i></div>
         <div style="color:var(--text-light);font-size:0.85rem;">何を</div>
       </div>
       <div>
-        <div style="width:48px;height:48px;border-radius:50%;background:var(--yellow);margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center;"><i class="fas fa-scale-balanced" style="color:#fff;font-size:1rem;"></i></div>
-        <div style="font-weight:600;color:var(--yellow);">黄 <i class="fas fa-scale-balanced" style="font-size:0.7rem"></i></div>
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--green);margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center;"><i class="fas fa-scale-balanced" style="color:#fff;font-size:1rem;"></i></div>
+        <div style="font-weight:600;color:var(--green);">緑 <i class="fas fa-scale-balanced" style="font-size:0.7rem"></i></div>
         <div style="color:var(--text-light);font-size:0.85rem;">＝（イコール）</div>
       </div>
       <div>
@@ -507,8 +547,8 @@ body.shift-active .school-hint {
       </div>
       <div>
         <div style="width:48px;height:48px;border-radius:50%;background:var(--gray);margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center;"><i class="fas fa-link" style="color:#fff;font-size:1rem;"></i></div>
-        <div style="font-weight:600;color:var(--gray);">灰 <i class="fas fa-link" style="font-size:0.7rem"></i></div>
-        <div style="color:var(--text-light);font-size:0.85rem;">接着剤（と、しかし）</div>
+        <div style="font-weight:600;color:var(--gray);">灰色 <i class="fas fa-link" style="font-size:0.7rem"></i></div>
+        <div style="color:var(--text-light);font-size:0.85rem;">鎖（と、しかし）</div>
       </div>
     </div>
     <p style="color:var(--text-light);font-size:0.8rem;text-align:center;margin-top:1rem;">
@@ -517,7 +557,7 @@ body.shift-active .school-hint {
   </div>
 
   <div class="insight">
-    最初は<strong><span style="color:var(--blue)">青</span>・<span style="color:var(--red)">赤</span>・<span style="color:var(--green)">緑</span></strong>だけ意識すればOK。<br>
+    最初は<strong><span style="color:var(--blue)">青</span>・<span style="color:var(--red)">赤</span>・<span style="color:var(--yellow)">黄</span></strong>だけ意識すればOK。<br>
     他の色は、使っているうちに自然と見えてきます。<br>
     <strong>文法用語は一つも覚えなくていい。色が教えてくれる。</strong>
   </div>
@@ -534,10 +574,14 @@ body.shift-active .school-hint {
 <!-- STEP 5: Tutor -->
 <div class="step" id="step5">
   <span class="step-number">Step 5</span>
-  <h2>なにか喋ってみよう</h2>
-  <p>わからないこと、気になること、なんでも聞いてみてください。<br>Tutorが色とブロックで答えます。</p>
+  <h2>Tutorとなにか喋ってみよう</h2>
+  <p>わからないこと、気になること、なんでも聞いてみてください。<br>Tutorがなんでも答えます。</p>
 
   <div class="sentence-demo" style="padding:0; overflow:hidden;">
+    <div style="padding:12px 16px; background:#1a1a1a; border-bottom:1px solid #222; font-size:0.85rem; color:#888; display:flex; justify-content:space-between; align-items:center;">
+      <div><i class="fa-solid fa-cube" style="color:#4a9eff"></i> <span style="color:#4a9eff; font-weight:600;">Tutor</span></div>
+      <span style="color:#444;">&times;</span>
+    </div>
     <div id="tutorMessages" style="max-height:300px; overflow-y:auto; padding:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
       <div class="tutor-row bot">
         <div style="display:flex; gap:0.5rem; align-items:flex-start;">
@@ -570,10 +614,10 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
       // Animate blocks within this step
-      const blocks = entry.target.querySelectorAll('.block');
+      const blocks = entry.target.querySelectorAll('.block, .block-nest');
       blocks.forEach(block => {
         const delay = parseInt(block.dataset.delay || 0);
-        setTimeout(() => block.classList.add('show'), delay + 300);
+        setTimeout(() => { block.classList.add('show'); block.style.opacity='1'; block.style.transform='scale(1)'; }, delay + 300);
       });
       const arrows = entry.target.querySelectorAll('.arrow');
       arrows.forEach((a, i) => {
