@@ -222,13 +222,15 @@ body {
 .school-hint {
   font-size: 0.8rem;
   color: #666;
-  display: none;
+  display: inline;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
 }
 body.shift-active .school-hint {
-  display: inline;
   opacity: 1;
+  max-height: 3em;
 }
 
 /* Responsive */
