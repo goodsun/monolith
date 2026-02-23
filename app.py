@@ -70,6 +70,12 @@ RULES:
    - Inverted sentences: "Never have I seen" → Never=M, have seen=V, I=S. Don't merge the subject into V.
    - It-cleft: "It was John who broke..." → It=S(formal), was=V, John=C, who-clause=REL
    - Auxiliary inversion: "did she sing" → did sing=V (one unit), she=S. Don't split auxiliary from main verb when they form one predicate.
+11. REDUCED CLAUSES & PARTICIPLES:
+   - Contact clauses (omitted relative pronoun): "The book I bought" → [S: The book [REL: I bought]]. Always recognize the hidden "that/which".
+   - Post-modifying participles: "The girl sitting next to me" → [S: The girl [REL: sitting next to me]]. Treat as reduced relative clause (REL).
+   - Past participle modifiers: "The report written by the team" → [S: The report [REL: written by the team]].
+   - Participial phrases as adverbials: "Walking down the street, ..." → M (not SUB). Participle phrases modifying the main clause are modifiers.
+   - NEVER return empty text in leaf blocks. Every leaf must have non-empty "text", "ja", and "words".
 
 OUTPUT FORMAT:
 {{"sentences":[{{"text":"...","ja":"...","blocks":[...]}}]}}
