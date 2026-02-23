@@ -130,7 +130,47 @@ This design follows the "subtraction" philosophy: start with minimal information
 
 This dual-granularity interaction allows learners to move between holistic understanding (block-level) and detailed analysis (word-level) fluidly.
 
-### 3.5 AI as Parser
+### 3.5 Multi-Language Input
+
+Monolith accepts input in any language, not just English. When non-English text is detected (via Unicode character analysis), the AI first translates the input to English at the appropriate level, then parses the result. This enables:
+
+- Japanese speakers to input thoughts in Japanese and see the English structural equivalent
+- Cross-linguistic structural comparison (how a Japanese idea restructures in English)
+- Zero-barrier entry for absolute beginners who cannot yet compose English sentences
+
+### 3.6 Level Adaptation
+
+Three difficulty levels adapt the output to the learner's proficiency:
+
+| Level | CEFR | Characteristics |
+|-------|------|----------------|
+| Beginner | A1-A2 | Short SVO sentences, <10 words, basic vocabulary |
+| Intermediate | B1-B2 | Natural idioms, compound sentences, everyday complexity |
+| Advanced | C1-C2 | Nested clauses, academic vocabulary, complex subordination |
+
+When combined with multi-language input, this creates a powerful workflow: a learner inputs a complex thought in Japanese, selects "Beginner," and sees a simple English structural pattern; switching to "Advanced" reveals how the same thought expands into nested complexity.
+
+### 3.7 ◻ Tutor: AI Structural Guide
+
+An integrated chat widget (the "◻ Tutor") provides contextual structural explanation in Japanese. After parsing a sentence, the learner can ask the Tutor questions about the resulting structure:
+
+- "Why is this block purple?"
+- "What does the nesting mean here?"
+- "How would this sentence change if I moved this part?"
+
+The Tutor has access to the current parse result and explains structure using Monolith's visual language (colors and blocks) rather than grammar terminology—maintaining the grammar-free philosophy even in natural language explanation.
+
+### 3.8 Detailed Explanation Mode
+
+An optional `explain` flag triggers per-sentence structural explanation directly in the parse response. When enabled, the AI appends a 2-3 sentence Japanese explanation to each parsed sentence covering:
+
+- What sentence pattern/structure is used (e.g., SVO, passive, there-construction)
+- Notable nesting or clause relationships
+- Why this structure works and what nuance it conveys
+
+Crucially, explanations use Monolith's own visual language rather than grammar terminology—e.g., *"赤ブロック(動詞)の後に緑の入れ子(従属節)が続く構造"* instead of *"主節の述語動詞に従属節が後続する"*. This keeps even the metalevel discourse within the grammar-free philosophy.
+
+### 3.9 AI as Parser
 
 The parsing engine uses Google Gemini 2.0 Flash via a single API call that simultaneously produces:
 - Syntactic structure (roles + nesting)
@@ -404,6 +444,6 @@ These associations are intended to be subliminal rather than explicit, reinforci
 
 ## Appendix B: Live Demo
 
-A live instance is available at: https://teddy.bon-soleil.com/monolith/
+A live instance is available at: https://monolith.bon-soleil.com/
 
 Source code: https://github.com/goodsun/monolith
