@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monolith — Structural English Visualizer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0d1a'/><polygon points='50,15 85,35 85,65 50,85 15,65 15,35' fill='none' stroke='%234a9eff' stroke-width='6'/><line x1='50' y1='15' x2='50' y2='85' stroke='%234a9eff' stroke-width='4'/><line x1='15' y1='35' x2='85' y2='35' stroke='%234a9eff' stroke-width='4' opacity='0.5'/></svg>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -397,59 +398,94 @@
     margin: 16px 0;
   }
 
-  /* Chat Panel */
-  .chat-toggle {
+  /* Chat Widget */
+  .chat-widget {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 48px;
-    height: 48px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    animation: chat-float 3s ease-in-out infinite;
+  }
+  .chat-widget.open {
+    animation: none;
+  }
+  .chat-widget.open .chat-toggle { display: none; }
+  .chat-widget.open .chat-hint { display: none; }
+
+  .chat-toggle {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: #1a1a2e;
-    border: 1px solid #4a9eff;
+    border: 4px solid #4a9eff;
+    background: #0d0d1a;
     color: #4a9eff;
-    font-size: 1.2rem;
+    font-size: 2rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(74, 158, 255, 0.3);
   }
-  .chat-toggle:hover { background: #4a9eff22; }
-  .chat-toggle i { font-size: 1.3rem; }
+  @keyframes chat-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .chat-widget:hover {
+    animation-play-state: paused;
+  }
+  .chat-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(74, 158, 255, 0.5);
+  }
+  .chat-toggle.has-parse {
+    box-shadow: 0 4px 24px rgba(74, 158, 255, 0.5);
+  }
 
   .chat-hint {
-    position: fixed;
-    bottom: 80px;
-    right: 24px;
-    background: #1a1a2e;
-    border: 1px solid #4a9eff66;
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    background: #151520;
     color: #ccc;
-    padding: 8px 14px;
-    border-radius: 12px 12px 0 12px;
-    font-size: 0.8rem;
-    z-index: 999;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: all 0.3s;
-    pointer-events: none;
+    padding: 0.6rem 1rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    border: 1px solid #4a9eff44;
     white-space: nowrap;
+    cursor: pointer;
+    pointer-events: auto;
   }
-  .chat-hint.show {
-    opacity: 1;
-    transform: translateY(0);
+  .chat-hint::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 27px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 10px solid #4a9eff44;
   }
-  .chat-toggle.has-parse { animation: pulse-glow 2s ease-in-out infinite; }
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 #4a9eff44; }
-    50% { box-shadow: 0 0 12px 4px #4a9eff44; }
+  .chat-hint::after {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    right: 28px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #151520;
   }
+  /* .chat-hint.show removed — always visible */
 
   .chat-panel {
-    position: fixed;
-    bottom: 84px;
-    right: 24px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 380px;
     max-height: 500px;
     background: #111;
@@ -490,44 +526,45 @@
   }
   .chat-row.user { flex-direction: row-reverse; }
   .chat-avatar {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
-    border: 1px solid #333;
+    font-size: 1rem;
+    border: 2px solid #333;
     background: #1a1a1a;
   }
   .chat-row.bot .chat-avatar {
     background: #1a1a2e;
-    border-color: #4a9eff44;
+    border-color: #4a9eff;
     color: #4a9eff;
   }
   .chat-row.user .chat-avatar {
     background: #1a1a1a;
+    border-color: #555;
     color: #888;
   }
-  .chat-bubble {
+  .chat-bubble-wrap {
     max-width: 80%;
-    padding: 8px 14px;
-    border-radius: 16px;
+    padding: 10px 14px;
+    border-radius: 20px;
     font-size: 0.85rem;
     line-height: 1.6;
     word-wrap: break-word;
   }
-  .chat-row.bot .chat-bubble {
+  .chat-row.bot .chat-bubble-wrap {
     background: #151515;
-    border: 1px solid #222;
-    border-radius: 16px 16px 16px 4px;
+    border: 2px solid #222;
+    border-radius: 20px 20px 20px 4px;
     color: #bbb;
   }
-  .chat-row.user .chat-bubble {
+  .chat-row.user .chat-bubble-wrap {
     background: #1a1a2e;
-    border: 1px solid #4a9eff44;
-    border-radius: 16px 16px 4px 16px;
+    border: 2px solid #4a9eff44;
+    border-radius: 20px 20px 4px 20px;
     color: #ccc;
   }
 
@@ -597,15 +634,17 @@
 <div class="history" id="history"></div>
 
 <!-- Chat Toggle Button -->
-<button class="chat-toggle" id="chatToggle" title="Tutor に質問する">
-  <i class="fa-solid fa-cube"></i>
-</button>
-<div class="chat-hint" id="chatBubble"><i class="fa-solid fa-cube"></i> Tutor がお答えします。</div>
+<div class="chat-widget" id="chatWidget">
+  <button class="chat-toggle" id="chatToggle" title="Tutor に質問する">
+    <i class="fa-solid fa-cube"></i>
+  </button>
+  <div class="chat-hint" id="chatBubble"><i class="fa-solid fa-cube"></i> Tutorがおこたえします。</div>
 
-<!-- Chat Panel -->
-<div class="chat-panel" id="chatPanel">
+  <!-- Chat Panel -->
+  <div class="chat-panel" id="chatPanel">
   <div class="chat-header">
     <div><i class="fa-solid fa-cube" style="color:#4a9eff"></i> <span>Tutor</span></div>
+    <button onclick="document.getElementById('chatToggle').click()" style="background:none;border:none;color:#666;cursor:pointer;font-size:1rem;padding:0"><i class="fas fa-xmark"></i></button>
   </div>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-input-area">
@@ -613,8 +652,10 @@
     <button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
   </div>
 </div>
+</div><!-- /chat-widget -->
 
 <script>
+const apiBase = location.pathname.includes('/monolith') ? '/monolith' : '';
 // Shift key tracking for word-level tooltips
 let shiftHeld = false;
 document.addEventListener('keydown', e => {
@@ -769,15 +810,17 @@ const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 
 const chatBubble = document.getElementById('chatBubble');
+const chatWidget = document.getElementById('chatWidget');
 
 let chatInited = false;
 chatToggle.addEventListener('click', () => {
   chatOpen = !chatOpen;
   chatPanel.classList.toggle('open', chatOpen);
+  chatWidget.classList.toggle('open', chatOpen);
   chatBubble.classList.remove('show');
   if (chatOpen) {
     if (!chatInited) {
-      appendChatMsg('<i class="fa-solid fa-cube" style="color:#4a9eff"></i> Tutor がお答えします。構造について何でも聞いてください。', 'bot');
+      appendChatMsg('<i class="fa-solid fa-cube" style="color:#4a9eff"></i> Tutorが英語の構造について詳しく解説します。何でもお気軽に聞いてください。', 'bot');
       chatInited = true;
     }
     chatInput.focus();
@@ -795,7 +838,7 @@ function appendChatMsg(text, role) {
   avatar.className = 'chat-avatar';
   avatar.innerHTML = role === 'bot' ? '<i class="fa-solid fa-cube"></i>' : '<i class="fas fa-user"></i>';
   const bubble = document.createElement('div');
-  bubble.className = 'chat-bubble';
+  bubble.className = 'chat-bubble-wrap';
   bubble.innerHTML = text.replace(/\n/g, '<br>');
   row.appendChild(avatar);
   row.appendChild(bubble);
@@ -812,12 +855,12 @@ async function sendChat() {
 
   const loading = document.createElement('div');
   loading.className = 'chat-row bot';
-  loading.innerHTML = '<div class="chat-avatar"><i class="fa-solid fa-cube"></i></div><div class="chat-bubble"><i class="fa-solid fa-cube" style="animation:bounce 1.2s infinite"></i></div>';
+  loading.innerHTML = '<div class="chat-avatar"><i class="fa-solid fa-cube"></i></div><div class="chat-bubble-wrap"><i class="fa-solid fa-cube" style="animation:bounce 1.2s infinite"></i></div>';
   chatMessages.appendChild(loading);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
   try {
-    const res = await fetch('/monolith/api/chat', {
+    const res = await fetch(apiBase + '/api/chat', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -847,7 +890,7 @@ parse = async function() {
   result.innerHTML = '<div class="loading"><i class="fa-solid fa-cube"></i> <i class="fa-solid fa-cube"></i> <i class="fa-solid fa-cube"></i></div>';
 
   try {
-    const res = await fetch('/monolith/api/parse', {
+    const res = await fetch(apiBase + '/api/parse', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({sentence, level: currentLevel})
