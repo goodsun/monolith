@@ -51,26 +51,60 @@ body {
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  background: radial-gradient(ellipse at 50% 50%, #0d1117 0%, #020409 60%, #000 100%);
 }
 
-.hero::before {
+/* Stars canvas */
+.hero canvas#stars {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+/* Cosmic glow behind title */
+.hero::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(212,149,106,0.08) 0%, transparent 70%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(74,158,255,0.12) 0%, rgba(74,158,255,0.03) 40%, transparent 70%);
   pointer-events: none;
+}
+
+.hero-monolith {
+  font-size: 3rem;
+  color: #4a9eff;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: monolith-glow 4s ease-in-out infinite alternate;
+}
+@keyframes monolith-glow {
+  0% { filter: drop-shadow(0 0 20px rgba(74,158,255,0.3)); }
+  100% { filter: drop-shadow(0 0 40px rgba(74,158,255,0.7)); }
 }
 
 .hero h1 {
   font-family: 'Outfit', sans-serif;
   font-size: 4rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.3em;
   margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 40px rgba(74,158,255,0.3), 0 0 80px rgba(74,158,255,0.1);
+}
+
+.hero .subtitle,
+.hero .tagline,
+.hero .cta-button,
+.hero .scroll-hint {
+  position: relative;
+  z-index: 1;
 }
 
 .hero .subtitle {
@@ -547,6 +581,8 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <!-- Hero -->
 <div class="hero">
+  <canvas id="stars"></canvas>
+  <div class="hero-monolith"><i class="fa-solid fa-cube"></i></div>
   <h1>MONOLITH</h1>
   <p class="subtitle">Structural English Visualizer</p>
   <p class="tagline">文法用語ゼロ。<br><em>色とブロック</em>だけで、英語の構造が見える。</p>
@@ -985,5 +1021,59 @@ style.textContent = `.m-block.shift-on .m-icon { opacity: 0.9 !important; }
 document.head.appendChild(style);
 </script>
 
+<script>
+(function(){
+  const c = document.getElementById('stars');
+  const ctx = c.getContext('2d');
+  const hero = c.parentElement;
+  let stars = [];
+
+  function resize() {
+    c.width = hero.offsetWidth * devicePixelRatio;
+    c.height = hero.offsetHeight * devicePixelRatio;
+    c.style.width = hero.offsetWidth + 'px';
+    c.style.height = hero.offsetHeight + 'px';
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    init();
+  }
+
+  function init() {
+    const w = hero.offsetWidth, h = hero.offsetHeight;
+    stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.5 + 0.5,
+        alpha: Math.random(),
+        speed: Math.random() * 0.005 + 0.002,
+        phase: Math.random() * Math.PI * 2,
+        blue: Math.random() < 0.15
+      });
+    }
+  }
+
+  function draw(t) {
+    const w = hero.offsetWidth, h = hero.offsetHeight;
+    ctx.clearRect(0, 0, w, h);
+    stars.forEach(s => {
+      const a = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      if (s.blue) {
+        ctx.fillStyle = `rgba(74,158,255,${a * 0.8})`;
+      } else {
+        ctx.fillStyle = `rgba(255,255,255,${a * 0.7})`;
+      }
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>
