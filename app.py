@@ -70,9 +70,11 @@ def build_prompt(sentence, level="intermediate", translate=False):
         translate_instruction = (
             "The input is NOT in English. First translate it into natural English "
             f"at the specified level, then parse the English translation. "
-            f"Include \"source\" field in each sentence with the original input text."
+            f"Split the input into logical sentence units. For EACH English sentence, "
+            f"include a \"source\" field containing ONLY the corresponding portion of the original input "
+            f"(not the entire input). Map each source segment to its English translation 1:1."
         )
-        source_field = '\n   Also include "source" (the original non-English input) in each sentence object'
+        source_field = '\n   Also include "source" (the corresponding portion of the original non-English input) in each sentence object'
     else:
         translate_instruction = "The input is in English. Parse it directly."
         source_field = ""
