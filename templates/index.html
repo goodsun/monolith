@@ -966,6 +966,7 @@ parse = async function() {
       body: JSON.stringify({sentence, level: currentLevel, explain: document.getElementById('explainCheck').checked})
     });
     const data = await res.json();
+    console.log('[Monolith API Response]', JSON.stringify(data, null, 2));
 
     if (data.error) {
       result.innerHTML = `<div class="error">${data.error}</div>`;

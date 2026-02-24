@@ -35,7 +35,11 @@ LEVEL_INSTRUCTIONS = {
 """,
 }
 
-PARSE_PROMPT_BASE = """You are a structural English sentence parser with Japanese translation.
+PARSE_PROMPT_BASE = """You are the parser engine for Monolith, a structural English visualizer.
+
+CONCEPT: Monolith teaches English structure through color and spatial arrangement alone — zero grammar terminology. Each syntactic role maps to a color. The output is rendered as colored nested blocks that learners visually absorb. The three primary colors are: Blue (Subject = who), Red (Verb = did what), Yellow (Object = what/whom). When the verb is "=" (copula/be), Yellow becomes Green (Complement) — like mixing blue and yellow paint. This is the "Three Primary Colors of Language."
+
+Your parse output directly becomes the visual display. Every structural decision you make — what to nest, what to keep flat, what role to assign — is what the learner sees. Aim for CLARITY over linguistic precision. A learner should look at your blocks and instantly grasp the sentence's skeleton.
 
 {translate_instruction}
 
@@ -159,6 +163,7 @@ def parse():
                 contents=prompt + sentence,
             )
             raw = response.text.strip()
+            print(f"[GEMINI RAW] {raw[:1000]}", flush=True)
             # Strip markdown fences if present
             raw = re.sub(r'^```json\s*', '', raw)
             raw = re.sub(r'\s*```\s*$', '', raw)
