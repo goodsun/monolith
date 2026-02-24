@@ -626,50 +626,50 @@ footer a { color: var(--accent); text-decoration: none; }
       <polygon points="160,40 264,100 264,220 160,280 56,220 56,100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
 
       <!-- Primary triangle S-V-O -->
-      <polygon points="160,40 264,220 56,220" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="6"/>
+      <polygon points="160,40 56,220 264,220" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="6"/>
 
       <!-- Mixing lines: S↔O=green, S↔V=purple, V↔O=orange -->
-      <line x1="160" y1="40" x2="56" y2="220" stroke="#5ba55b" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
-      <line x1="160" y1="40" x2="264" y2="220" stroke="#9b6eb5" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
-      <line x1="264" y1="220" x2="56" y2="220" stroke="#d48540" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+      <line x1="160" y1="40" x2="264" y2="220" stroke="#5ba55b" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+      <line x1="160" y1="40" x2="56" y2="220" stroke="#9b6eb5" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+      <line x1="56" y1="220" x2="264" y2="220" stroke="#d48540" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
 
       <!-- 6 hex vertices: all r=24, uniform size -->
-      <!-- Color wheel clockwise: S(blue) → M(purple) → V(red) → REL(orange) → O(yellow) → C(green) -->
+      <!-- Counter-clockwise: S(top) → M(upper-left) → V(lower-left) → REL(bottom) → O(lower-right) → C(upper-right) -->
 
       <!-- S = Blue — top (160,40) -->
       <circle cx="160" cy="40" r="24" fill="#5b8fb9" opacity="0.9"/>
       <text x="160" y="46" text-anchor="middle" fill="white" font-size="14" font-weight="600">S</text>
       <text x="160" y="14" text-anchor="middle" fill="#5b8fb9" font-size="11">青 — 誰が</text>
 
-      <!-- M = Purple — upper-right (264,100) -->
-      <circle cx="264" cy="100" r="24" fill="#9b6eb5" opacity="0.9"/>
-      <text x="264" y="106" text-anchor="middle" fill="white" font-size="14" font-weight="600">M</text>
-      <text x="295" y="106" text-anchor="start" fill="#9b6eb5" font-size="10">紫 — 飾り</text>
+      <!-- M = Purple — upper-left (56,100) -->
+      <circle cx="56" cy="100" r="24" fill="#9b6eb5" opacity="0.9"/>
+      <text x="56" y="106" text-anchor="middle" fill="white" font-size="14" font-weight="600">M</text>
+      <text x="23" y="106" text-anchor="end" fill="#9b6eb5" font-size="10">紫 — 飾り</text>
 
-      <!-- V = Red — lower-right (264,220) -->
-      <circle cx="264" cy="220" r="24" fill="#c75050" opacity="0.9"/>
-      <text x="264" y="226" text-anchor="middle" fill="white" font-size="14" font-weight="600">V</text>
-      <text x="295" y="226" text-anchor="start" fill="#c75050" font-size="11">赤 — どうした</text>
+      <!-- V = Red — lower-left (56,220) -->
+      <circle cx="56" cy="220" r="24" fill="#c75050" opacity="0.9"/>
+      <text x="56" y="226" text-anchor="middle" fill="white" font-size="14" font-weight="600">V</text>
+      <text x="23" y="226" text-anchor="end" fill="#c75050" font-size="11">赤 — どうした</text>
 
       <!-- REL = Orange — bottom (160,280) -->
       <circle cx="160" cy="280" r="24" fill="#d48540" opacity="0.9"/>
       <text x="160" y="286" text-anchor="middle" fill="white" font-size="14" font-weight="600">REL</text>
       <text x="160" y="310" text-anchor="middle" fill="#d48540" font-size="10">橙 — つなぎ</text>
 
-      <!-- O = Yellow — lower-left (56,220) -->
-      <circle cx="56" cy="220" r="24" fill="#c7a840" opacity="0.9"/>
-      <text x="56" y="226" text-anchor="middle" fill="white" font-size="14" font-weight="600">O</text>
-      <text x="23" y="226" text-anchor="end" fill="#c7a840" font-size="11">黄 — 何を</text>
+      <!-- O = Yellow — lower-right (264,220) -->
+      <circle cx="264" cy="220" r="24" fill="#c7a840" opacity="0.9"/>
+      <text x="264" y="226" text-anchor="middle" fill="white" font-size="14" font-weight="600">O</text>
+      <text x="295" y="226" text-anchor="start" fill="#c7a840" font-size="11">黄 — 何を</text>
 
-      <!-- C = Green — upper-left (56,100) -->
-      <circle cx="56" cy="100" r="24" fill="#5ba55b" opacity="0.9"/>
-      <text x="56" y="106" text-anchor="middle" fill="white" font-size="14" font-weight="600">C</text>
-      <text x="23" y="106" text-anchor="end" fill="#5ba55b" font-size="10">緑 — ＝</text>
+      <!-- C = Green — upper-right (264,100) -->
+      <circle cx="264" cy="100" r="24" fill="#5ba55b" opacity="0.9"/>
+      <text x="264" y="106" text-anchor="middle" fill="white" font-size="14" font-weight="600">C</text>
+      <text x="295" y="106" text-anchor="start" fill="#5ba55b" font-size="10">緑 — ＝</text>
 
-      <!-- SUB = Teal — small, on S-C edge midpoint (108,70) -->
-      <circle cx="108" cy="70" r="13" fill="#48d1cc" opacity="0.8"/>
-      <text x="108" y="74" text-anchor="middle" fill="white" font-size="8" font-weight="600">SUB</text>
-      <text x="90" y="55" text-anchor="end" fill="#48d1cc" font-size="9">青緑</text>
+      <!-- SUB = Teal — small, on S-C edge midpoint (212,70) -->
+      <circle cx="212" cy="70" r="13" fill="#48d1cc" opacity="0.8"/>
+      <text x="212" y="74" text-anchor="middle" fill="white" font-size="8" font-weight="600">SUB</text>
+      <text x="230" y="55" text-anchor="start" fill="#48d1cc" font-size="9">青緑</text>
 
       <!-- CONJ = Gray — center (160,160) -->
       <circle cx="160" cy="160" r="15" fill="#666" opacity="0.5"/>
