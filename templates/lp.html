@@ -636,45 +636,46 @@ footer a { color: var(--accent); text-decoration: none; }
       <!-- 6 hex vertices: all r=24, uniform size -->
       <!-- Counter-clockwise: S(top) → M(upper-left) → V(lower-left) → REL(bottom) → O(lower-right) → C(upper-right) -->
 
+      <!-- Icons via foreignObject: ⭐star ⚡bolt 🎯crosshairs ⚖️scale-balanced 💎gem 🤝handshake 📚layer-group 🔗link -->
+
       <!-- S = Blue — top (160,40) -->
       <circle cx="160" cy="40" r="24" fill="#5b8fb9" opacity="0.9"/>
-      <text x="160" y="46" text-anchor="middle" fill="white" font-size="14" font-weight="600">S</text>
-      <text x="160" y="14" text-anchor="middle" fill="#5b8fb9" font-size="11">青 — 誰が</text>
+      <foreignObject x="144" y="26" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:28px;"><i class="fas fa-star" style="color:white;font-size:14px;"></i></div></foreignObject>
+      <text x="160" y="14" text-anchor="middle" fill="#5b8fb9" font-size="11">誰が</text>
 
       <!-- M = Purple — upper-left (56,100) -->
       <circle cx="56" cy="100" r="24" fill="#9b6eb5" opacity="0.9"/>
-      <text x="56" y="106" text-anchor="middle" fill="white" font-size="14" font-weight="600">M</text>
-      <text x="23" y="106" text-anchor="end" fill="#9b6eb5" font-size="10">紫 — 飾り</text>
+      <foreignObject x="40" y="86" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:28px;"><i class="fas fa-gem" style="color:white;font-size:14px;"></i></div></foreignObject>
+      <text x="23" y="106" text-anchor="end" fill="#9b6eb5" font-size="10">飾り</text>
 
       <!-- V = Red — lower-left (56,220) -->
       <circle cx="56" cy="220" r="24" fill="#c75050" opacity="0.9"/>
-      <text x="56" y="226" text-anchor="middle" fill="white" font-size="14" font-weight="600">V</text>
-      <text x="23" y="226" text-anchor="end" fill="#c75050" font-size="11">赤 — どうした</text>
+      <foreignObject x="40" y="206" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:28px;"><i class="fas fa-bolt" style="color:white;font-size:14px;"></i></div></foreignObject>
+      <text x="23" y="226" text-anchor="end" fill="#c75050" font-size="11">どうした</text>
 
       <!-- REL = Orange — bottom (160,280) -->
       <circle cx="160" cy="280" r="24" fill="#d48540" opacity="0.9"/>
-      <text x="160" y="286" text-anchor="middle" fill="white" font-size="14" font-weight="600">REL</text>
-      <text x="160" y="310" text-anchor="middle" fill="#d48540" font-size="10">橙 — つなぎ</text>
+      <foreignObject x="144" y="266" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:28px;"><i class="fas fa-handshake" style="color:white;font-size:12px;"></i></div></foreignObject>
+      <text x="160" y="310" text-anchor="middle" fill="#d48540" font-size="10">つなぎ</text>
 
       <!-- O = Yellow — lower-right (264,220) -->
       <circle cx="264" cy="220" r="24" fill="#c7a840" opacity="0.9"/>
-      <text x="264" y="226" text-anchor="middle" fill="white" font-size="14" font-weight="600">O</text>
-      <text x="295" y="226" text-anchor="start" fill="#c7a840" font-size="11">黄 — 何を</text>
+      <foreignObject x="248" y="206" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:28px;"><i class="fas fa-crosshairs" style="color:white;font-size:14px;"></i></div></foreignObject>
+      <text x="295" y="226" text-anchor="start" fill="#c7a840" font-size="11">何を</text>
 
       <!-- C = Green — upper-right (264,100) -->
       <circle cx="264" cy="100" r="24" fill="#5ba55b" opacity="0.9"/>
-      <text x="264" y="106" text-anchor="middle" fill="white" font-size="14" font-weight="600">C</text>
-      <text x="295" y="106" text-anchor="start" fill="#5ba55b" font-size="10">緑 — ＝</text>
+      <foreignObject x="248" y="86" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:28px;"><i class="fas fa-scale-balanced" style="color:white;font-size:12px;"></i></div></foreignObject>
+      <text x="295" y="106" text-anchor="start" fill="#5ba55b" font-size="10">＝</text>
 
       <!-- SUB = Teal — small, on S-C edge midpoint (212,70) -->
       <circle cx="212" cy="70" r="13" fill="#48d1cc" opacity="0.8"/>
-      <text x="212" y="74" text-anchor="middle" fill="white" font-size="8" font-weight="600">SUB</text>
-      <text x="230" y="55" text-anchor="start" fill="#48d1cc" font-size="9">青緑</text>
+      <foreignObject x="201" y="60" width="22" height="20"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:20px;"><i class="fas fa-layer-group" style="color:white;font-size:9px;"></i></div></foreignObject>
 
       <!-- CONJ = Gray — center (160,160) -->
       <circle cx="160" cy="160" r="15" fill="#666" opacity="0.5"/>
-      <text x="160" y="164" text-anchor="middle" fill="white" font-size="9" font-weight="600">CONJ</text>
-      <text x="160" y="143" text-anchor="middle" fill="#888" font-size="9">灰 — 鎖</text>
+      <foreignObject x="149" y="150" width="22" height="20"><div xmlns="http://www.w3.org/1999/xhtml" style="text-align:center;line-height:20px;"><i class="fas fa-link" style="color:white;font-size:9px;"></i></div></foreignObject>
+      <text x="160" y="143" text-anchor="middle" fill="#888" font-size="9">鎖</text>
     </svg>
   </div>
 
