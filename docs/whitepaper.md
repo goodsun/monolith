@@ -153,7 +153,47 @@ The eight colors of Monolith are not arbitrary assignments—they are systematic
 
 - **Gray (CONJ = Conjunction).** Conjunctions carry no meaning of their own. They merely connect. The absence of color *is* the meaning: a colorless link between colored elements.
 
-This chromatic architecture means that the visual relationships between colors on screen mirror the structural relationships between syntactic roles. A learner need not be told that relative clauses contain verb-like elements—they can *see* that Orange sits between Red and Yellow on the color wheel.
+#### 3.1.3 The Hexagonal Arrangement
+
+These eight colors are arranged as a **regular hexagon** on the color wheel:
+
+```
+            S (Blue)
+           ★ 主役
+          /       \
+    C (Green)    M (Purple)
+    ⚖ 調和       💎 装飾
+      |    CONJ    |
+      |   🔗 接続   |
+    O (Yellow)   V (Red)
+    🎯 対象       🚗 動作
+          \       /
+          REL (Orange)
+           🤝 関係
+
+    * SUB (Teal) = on the S–C edge  📚 内包
+```
+
+The three primary colors (S, V, O) form an inscribed triangle; the three secondary colors (C, M, REL) occupy the alternating vertices. SUB, as a tertiary color, sits on the edge between its parents (S and C). CONJ, the sole achromatic element, occupies the center—outside the color wheel entirely.
+
+This is not merely a mnemonic device. The spatial relationships encode genuine information: a learner can *see* that Orange sits between Red and Yellow, that Green is the midpoint of Blue and Yellow, and that Teal is an intermediate between Blue and Green. The hexagonal color wheel functions as a **syntactic map** where chromatic proximity signals structural affinity.
+
+#### 3.1.4 The Three-Layer Symbol System: Figure, Mark, Word
+
+Monolith communicates syntactic roles through three parallel layers, none of which employ grammatical terminology:
+
+| Color | Icon | Kanji | Metaphor |
+|-------|------|-------|----------|
+| Blue (S) | ★ star | 主役 (protagonist) | The main character of the sentence |
+| Red (V) | 🚗 car | 動作 (action) | The engine that drives the sentence forward |
+| Yellow (O) | ⊕ crosshairs | 対象 (target) | Where the action is aimed |
+| Green (C) | ⚖ scale | 調和 (harmony) | Balancing with the subject as equals |
+| Purple (M) | ◆ gem | 装飾 (decoration) | An accessory that adorns the sentence |
+| Orange (REL) | 🤝 handshake | 関係 (relation) | A noun and its description joining hands |
+| Teal (SUB) | ☰ layers | 内包 (containment) | A sentence nested within a sentence |
+| Gray (CONJ) | 🔗 link | 接続 (connection) | Carries no meaning; only connects |
+
+The **figure** (hexagonal layout) conveys color relationships at a glance. The **mark** (icon) provides an intuitive metaphor grounded in embodied experience. The **word** (two-character kanji) anchors the concept in language—but crucially, in *descriptive* language rather than grammatical terminology. "主役" (protagonist) is universally understood; "Subject" requires grammatical knowledge. All three layers operate in parallel, and the color-mixing principles underlying each are fully consistent: the harmony of Blue and Yellow produces Green, whether read as chromatic mixture, icon relationship (star + crosshairs → scale), or semantic composition (protagonist + target → harmony).
 
 ### 3.2 Nesting as Hierarchy
 
