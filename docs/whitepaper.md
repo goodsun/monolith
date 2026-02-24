@@ -127,6 +127,34 @@ Every learner who has mixed blue and yellow paint in elementary school art class
 
 This resonates with the Japanese philosophical principle *"wa wo motte tōtoshi to nasu"* (和をもって尊しとなす)—"harmony is to be valued above all." A language learning tool born in Japan explains the complement through harmony: the balancing of subject and predicate into a new, unified color.
 
+#### 3.1.2 The Color Wheel as Syntactic Map
+
+The eight colors of Monolith are not arbitrary assignments—they are systematically positioned on the color wheel, encoding syntactic relationships through chromatic relationships.
+
+**Primary colors** form the sentence skeleton:
+
+| Color | Role | Function |
+|-------|------|----------|
+| Blue 🔵 | S (Subject) | The agent—who acts |
+| Red 🔴 | V (Verb) | The action—what happens |
+| Yellow 🟡 | O (Object) | The target—what is acted upon |
+
+**Secondary colors** are mixtures of primaries, and each mixture reflects a genuine syntactic relationship:
+
+- **Green (C = Complement) = Blue + Yellow.** The complement refers to the same entity as the subject. Blue (subject) harmonizes with Yellow (object position) through the equalizing verb, producing Green. (§3.1.1)
+- **Purple (M = Modifier) = Red + Blue.** Modifiers add information that touches both the verb (when/how the action happens) and the subject (what the agent is like). The color that mixes action and agency.
+- **Orange (REL = Relative Clause) = Red + Yellow.** A relative clause contains a verb (Red) and references a noun (Yellow), but its subject is backgrounded—left behind in the main clause. "The book *that I bought*": what matters is the buying (Red) and the book (Yellow); the buyer (Blue) recedes. Orange is the color of **action and target with the agent left behind**.
+
+**Tertiary color:**
+
+- **Teal (SUB = Subordinate Clause) = Blue + Green.** A subordinate clause is a self-contained sentence: it has its own subject (Blue) and its internal structure has already achieved harmony (Green = SV completion). Independence (Blue) plus harmony (Green) yields Teal—a clause that is complete in itself yet subordinate to another.
+
+**Achromatic:**
+
+- **Gray (CONJ = Conjunction).** Conjunctions carry no meaning of their own. They merely connect. The absence of color *is* the meaning: a colorless link between colored elements.
+
+This chromatic architecture means that the visual relationships between colors on screen mirror the structural relationships between syntactic roles. A learner need not be told that relative clauses contain verb-like elements—they can *see* that Orange sits between Red and Yellow on the color wheel.
+
 ### 3.2 Nesting as Hierarchy
 
 English complexity largely stems from clause embedding. Monolith renders this as block containment:
