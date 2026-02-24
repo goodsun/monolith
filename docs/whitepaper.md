@@ -99,14 +99,33 @@ Monolith maps syntactic roles to colors:
 |-------|------|-------------|-----------------|
 | Blue 🔵 | S | Agent of action | Subject |
 | Red 🔴 | V | The action itself | Verb |
-| Green 🟢 | O | Target of action | Object |
-| Yellow 🟡 | C | Equivalence (A = B) | Complement |
+| Yellow 🟡 | O | Target of action | Object |
+| Green 🟢 | C | Equivalence (A = B) | Complement |
 | Purple 🟣 | M | Additional info (when, where, how) | Modifier |
 | Orange 🟠 | REL | Describes a noun from behind | Relative Clause |
 | Teal 🩵 | SUB | A sentence within a sentence | Subordinate Clause |
 | Gray ⚪ | CONJ | Connective glue | Conjunction |
 
 Learners need not memorize any labels. Color patterns, observed repeatedly, form structural recognition naturally—analogous to how children acquire native language structure without studying grammar.
+
+#### 3.1.1 The Three Primary Colors of Language
+
+The three core roles—Subject (Blue), Verb (Red), Object (Yellow)—correspond to the subtractive primary colors universally known from childhood art education. This is not accidental.
+
+When Red (Verb) functions as an action, Yellow (Object) receives the impact: *He kicked **the ball***. Blue and Yellow remain distinct—agent and target.
+
+But when Red becomes "=" (the copula), something remarkable occurs. The element to the right of "=" refers to the same entity as the Subject. Blue (Subject) and Yellow (the position where Object would be) are no longer distinct—they point to the same thing. They harmonize. And in subtractive color mixing, **blue and yellow combine to produce green.**
+
+This is why the Complement is green: it is not a primary color that exists independently, but an emergent color born from the harmony of Subject and Object through the mediating "=" of the Verb. The balance icon (⚖️) represents this equilibrium—the moment when left and right sides of the equation find balance and blend.
+
+```
+He kicked the ball.     → Blue  Red  Yellow  (action → target stays yellow)
+The sky is blue.        → Blue  Red  Green   (= → harmony produces green)
+```
+
+Every learner who has mixed blue and yellow paint in elementary school art class carries this knowledge in their body. No explanation is needed. The color itself teaches.
+
+This resonates with the Japanese philosophical principle *"wa wo motte tōtoshi to nasu"* (和をもって尊しとなす)—"harmony is to be valued above all." A language learning tool born in Japan explains the complement through harmony: the balancing of subject and predicate into a new, unified color.
 
 ### 3.2 Nesting as Hierarchy
 
@@ -460,8 +479,8 @@ The color assignments are not arbitrary:
 
 - **Blue (Subject):** Stability, presence—the foundation on which the sentence rests
 - **Red (Verb):** Energy, action—the heartbeat of the sentence
-- **Green (Object):** Growth, direction—where the action leads
-- **Yellow (Complement):** Illumination—revealing what something *is*
+- **Yellow (Object):** Illumination, clarity—the target made visible
+- **Green (Complement):** Harmony—the emergent color when Blue (Subject) and Yellow (Object position) blend through the equalizing Red. Not a primary color, but born from balance (see §3.1.1)
 - **Purple (Modifier):** Richness—additional layers of meaning
 - **Orange (Relative):** Warmth, connection—linking back to enrich nouns
 - **Teal (Subordinate):** Depth—a world within a world
