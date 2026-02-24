@@ -63,6 +63,7 @@ RULES:
    - Compound modifiers → separate blocks
    Each leaf block should be SHORT — ideally under 6 words. If longer, find a way to split further.
    EXCEPTION: Articles (a, an, the) and determiners (this, that, my, his, etc.) must ALWAYS stay with their noun in the same block. NEVER separate "The" or "a" into its own block or nest it as a modifier. "The big cat" → one S block, NOT [M: The] + [S: big cat].
+   NESTING RULE: Only REL and SUB blocks should use "children" (be containers). S, V, O, C, M, CONJ are always leaf blocks with "text"+"words". A parent block (S, O, etc.) may contain REL or SUB as siblings within its children, but never nest M or other basic roles inside them.
 9. INTERROGATIVES: In questions, assign the grammatically correct role to question words:
    - "Who" as subject: "Who came?" → Who=S (Who performs the action)
    - "Who" as complement: "Who are you?" → you=S, Who=C (Who asks about identity, "you" is the subject)
