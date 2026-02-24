@@ -75,7 +75,15 @@ RULES:
    - Inverted sentences: "Never have I seen" → Never=M, have seen=V, I=S. Don't merge the subject into V.
    - It-cleft: "It was John who broke..." → It=S(formal), was=V, John=C, who-clause=REL
    - Auxiliary inversion: "did she sing" → did sing=V (one unit), she=S. Don't split auxiliary from main verb when they form one predicate.
-11. REDUCED CLAUSES & PARTICIPLES:
+12. BE-VERB COMPLEMENT RULE:
+   When the verb is a copula (is/am/are/was/were/be/been/being), the element after it is almost always C (complement, green), NOT M (modifier, purple).
+   - "She is in Tokyo" → in Tokyo = C (describes where she "equals")
+   - "They are at the top" → at the top = C
+   - "He was happy" → happy = C
+   - "It is important" → important = C
+   Only use M after be-verbs for truly optional adverbials like time: "She is always late" → always = M, late = C.
+   Remember: be-verb = "equals". The right side of "equals" is C (green = blue + yellow harmony).
+13. REDUCED CLAUSES & PARTICIPLES:
    - Contact clauses (omitted relative pronoun): "The book I bought" → [S: The book [REL: I bought]]. Always recognize the hidden "that/which".
    - Post-modifying participles: "The girl sitting next to me" → [S: The girl [REL: sitting next to me]]. Treat as reduced relative clause (REL).
    - Past participle modifiers: "The report written by the team" → [S: The report [REL: written by the team]].
