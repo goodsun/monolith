@@ -492,8 +492,8 @@ footer a { color: var(--accent); text-decoration: none; }
 
 .m-block.r-S   { border-color: #4a9eff; background: rgba(74,158,255,0.1); }
 .m-block.r-V   { border-color: #ff6b6b; background: rgba(255,107,107,0.1); }
-.m-block.r-O   { border-color: #51cf66; background: rgba(81,207,102,0.1); }
-.m-block.r-C   { border-color: #ffd43b; background: rgba(255,212,59,0.1); }
+.m-block.r-O   { border-color: #ffd43b; background: rgba(255,212,59,0.1); }
+.m-block.r-C   { border-color: #51cf66; background: rgba(81,207,102,0.1); }
 .m-block.r-M   { border-color: #b197fc; background: rgba(177,151,252,0.1); }
 .m-block.r-CONJ { border-color: #868e96; background: rgba(134,142,150,0.1); }
 .m-block.r-REL { border-color: #ff922b; background: rgba(255,146,43,0.1); }
@@ -501,8 +501,8 @@ footer a { color: var(--accent); text-decoration: none; }
 
 .m-block.r-S .m-text   { color: #4a9eff; }
 .m-block.r-V .m-text   { color: #ff6b6b; }
-.m-block.r-O .m-text   { color: #51cf66; }
-.m-block.r-C .m-text   { color: #ffd43b; }
+.m-block.r-O .m-text   { color: #ffd43b; }
+.m-block.r-C .m-text   { color: #51cf66; }
 .m-block.r-M .m-text   { color: #b197fc; }
 .m-block.r-CONJ .m-text { color: #868e96; }
 .m-block.r-REL .m-text { color: #ff922b; }
@@ -613,6 +613,82 @@ footer a { color: var(--accent); text-decoration: none; }
     これだけ。これが英語の骨格です。
   </p>
   <a href="/tutorial" style="color:var(--accent); text-decoration:none; font-size:0.9rem;"><i class="fas fa-graduation-cap" style="margin-right:0.3em"></i>チュートリアルで詳しく見る →</a>
+</section>
+
+<!-- Color Wheel -->
+<section style="text-align:center">
+  <h2 style="border:none; margin-bottom:0.5rem;"><i class="fas fa-palette"></i> 色相環が語る構造</h2>
+  <p style="margin-bottom:2rem;">Monolithの8色は、色相環の上に意味を持って配置されています。</p>
+
+  <div style="position:relative; width:320px; height:320px; margin:0 auto 2rem;">
+    <svg viewBox="0 0 320 320" width="320" height="320">
+      <!-- Hexagon outline (6 main roles) -->
+      <polygon points="160,40 267,100 267,220 160,280 53,220 53,100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+      <!-- Primary triangle (S-V-O) dashed -->
+      <line x1="160" y1="40" x2="53" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="6"/>
+      <line x1="53" y1="220" x2="267" y2="100" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="6"/>
+      <line x1="267" y1="100" x2="160" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="6"/>
+
+      <!-- Mixing lines: primary → secondary -->
+      <line x1="160" y1="40" x2="53" y2="220" stroke="#5ba55b" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+      <line x1="160" y1="40" x2="267" y2="100" stroke="#9b6eb5" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+      <line x1="53" y1="220" x2="267" y2="100" stroke="#d48540" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+
+      <!-- Hex vertices — color wheel order: S(top) → M(upper-right) → V(lower-right) → O(bottom) → REL(lower-left) → C(upper-left) -->
+      <!-- Wait: actual color wheel: blue→purple→red→orange→yellow→green -->
+      <!-- So: S=blue(top) → M=purple(upper-right) → V=red(lower-right) → REL=orange(bottom) → O=yellow(lower-left) → C=green(upper-left) -->
+
+      <!-- S = Blue — top -->
+      <circle cx="160" cy="40" r="26" fill="#5b8fb9" opacity="0.9"/>
+      <text x="160" y="45" text-anchor="middle" fill="white" font-size="13" font-weight="600">S</text>
+      <text x="160" y="18" text-anchor="middle" fill="#5b8fb9" font-size="11">青 — 誰が</text>
+
+      <!-- M = Purple — upper-right -->
+      <circle cx="267" cy="100" r="22" fill="#9b6eb5" opacity="0.9"/>
+      <text x="267" y="105" text-anchor="middle" fill="white" font-size="12" font-weight="600">M</text>
+      <text x="296" y="100" text-anchor="start" fill="#9b6eb5" font-size="10">紫 — 飾り</text>
+
+      <!-- V = Red — lower-right -->
+      <circle cx="267" cy="220" r="26" fill="#c75050" opacity="0.9"/>
+      <text x="267" y="225" text-anchor="middle" fill="white" font-size="13" font-weight="600">V</text>
+      <text x="296" y="220" text-anchor="start" fill="#c75050" font-size="11">赤 — どうした</text>
+
+      <!-- REL = Orange — bottom -->
+      <circle cx="160" cy="280" r="22" fill="#d48540" opacity="0.9"/>
+      <text x="160" y="285" text-anchor="middle" fill="white" font-size="11" font-weight="600">REL</text>
+      <text x="160" y="308" text-anchor="middle" fill="#d48540" font-size="10">橙 — つなぎ</text>
+
+      <!-- O = Yellow — lower-left -->
+      <circle cx="53" cy="220" r="26" fill="#c7a840" opacity="0.9"/>
+      <text x="53" y="225" text-anchor="middle" fill="white" font-size="13" font-weight="600">O</text>
+      <text x="20" y="220" text-anchor="end" fill="#c7a840" font-size="11">黄 — 何を</text>
+
+      <!-- C = Green — upper-left -->
+      <circle cx="53" cy="100" r="22" fill="#5ba55b" opacity="0.9"/>
+      <text x="53" y="105" text-anchor="middle" fill="white" font-size="12" font-weight="600">C</text>
+      <text x="20" y="100" text-anchor="end" fill="#5ba55b" font-size="10">緑 — ＝</text>
+
+      <!-- SUB = Teal — on the edge between S(blue) and C(green), upper-left side -->
+      <circle cx="100" cy="65" r="16" fill="#48d1cc" opacity="0.85"/>
+      <text x="100" y="69" text-anchor="middle" fill="white" font-size="9" font-weight="600">SUB</text>
+      <text x="72" y="52" text-anchor="end" fill="#48d1cc" font-size="9">青緑</text>
+
+      <!-- CONJ = Gray — center -->
+      <circle cx="160" cy="160" r="18" fill="#666" opacity="0.6"/>
+      <text x="160" y="164" text-anchor="middle" fill="white" font-size="9" font-weight="600">CONJ</text>
+      <text x="160" y="146" text-anchor="middle" fill="#888" font-size="9">灰 — 鎖</text>
+    </svg>
+  </div>
+
+  <div style="max-width:600px; margin:0 auto; text-align:left; font-size:0.9rem; color:var(--text-light); line-height:1.8;">
+    <p><strong style="color:var(--text)">一次色</strong>（青・赤・黄）が文の骨格。<strong style="color:var(--text)">二次色</strong>はその混合：</p>
+    <p style="margin:0.5rem 0;"><span style="color:#5ba55b">■</span> <strong style="color:#5ba55b">緑</strong> = 青＋黄。主語と同じものを指す<strong style="color:var(--text)">調和</strong>の色。</p>
+    <p style="margin:0.5rem 0;"><span style="color:#9b6eb5">■</span> <strong style="color:#9b6eb5">紫</strong> = 赤＋青。動作と主語の両方に関わる<strong style="color:var(--text)">飾り</strong>の色。</p>
+    <p style="margin:0.5rem 0;"><span style="color:#d48540">■</span> <strong style="color:#d48540">橙</strong> = 赤＋黄。動作はあるが主語は過去に置いてきた<strong style="color:var(--text)">関係</strong>の色。</p>
+    <p style="margin:0.5rem 0;"><span style="color:#48d1cc">■</span> <strong style="color:#48d1cc">青緑</strong> = 青＋緑。調和に独立性が加わった<strong style="color:var(--text)">もう一つの文</strong>。</p>
+    <p style="margin:0.5rem 0;"><span style="color:#888">■</span> <strong style="color:#888">灰</strong> = 無彩色。自分では意味を持たない、ただの<strong style="color:var(--text)">鎖</strong>。</p>
+  </div>
 </section>
 
 <!-- Problem -->
