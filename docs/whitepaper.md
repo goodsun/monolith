@@ -81,7 +81,13 @@ Taniguchi (2016) proposes that symbols (including language) emerge through bodil
 
 This theoretical lineage connects directly to Gibson's (1979) concept of **affordances**—the possibilities for action that objects or environments provide to an organism based on their physical properties and the organism's capabilities. In Monolith, the color-coded blocks function as structural affordances: they offer perceptual cues that *afford* specific patterns of understanding without requiring explicit grammatical explanation. Blue blocks afford "agent" recognition not through definitional teaching but through consistent perceptual association. This represents a shift from descriptive grammar (telling learners what structures "are") to affordance-based design (creating environments where understanding can emerge through direct perceptual engagement).
 
-Monolith draws inspiration from this lineage: where SES demonstrates how symbols emerge from embodied interaction with the environment, and Embodied Cognition shows that knowledge is rooted in physical experience, Monolith translates these insights into language education by converting abstract linguistic structures into visual-spatial experiences—transforming grammar from symbol-to-symbol mapping into direct perceptual engagement.
+A critical bridge between perceptual experience and abstract understanding is provided by Lakoff and Johnson's (1980) **Conceptual Metaphor Theory**. Their central thesis—that abstract concepts are systematically structured through metaphors grounded in bodily experience—directly justifies Monolith's color-mixing approach. We understand abstract domains (such as syntactic relationships) through concrete domains (such as physical color mixing) because our conceptual system is fundamentally metaphorical and embodied.
+
+In Monolith, this manifests as a precise structural mapping: the physical experience of mixing blue and yellow paint to produce green (an experience nearly universal from elementary school art classes) becomes the conceptual vehicle for understanding that a complement (Green) emerges from the harmony of subject (Blue) and object-position (Yellow). This is not merely an analogy—it is a **conceptual metaphor** in Lakoff and Johnson's technical sense: a systematic mapping from a source domain (color mixing) to a target domain (syntactic relationships) that preserves relational structure. The subtractive color mixing that every learner carries in embodied memory becomes the grounding for an abstract linguistic concept that would otherwise require multi-step terminological indirection.
+
+This conceptual metaphor layer explains *why* the color wheel architecture (§3.1) is pedagogically effective rather than merely aesthetically pleasing: learners are not asked to memorize arbitrary color-role associations, but to extend an embodied understanding they already possess into a new domain. The affordance (Gibson, 1979) of seeing Green between Blue and Yellow on the hexagonal color wheel is simultaneously a chromatic affordance and a conceptual one.
+
+Monolith thus draws inspiration from this full theoretical lineage: SES demonstrates how symbols emerge from embodied interaction; Embodied Cognition shows that knowledge is rooted in physical experience; Conceptual Metaphor Theory explains how abstract domains are structured through embodied metaphors; and Affordance Theory describes how environments can be designed to make these mappings perceptually available. Monolith translates these insights into language education by converting abstract linguistic structures into visual-spatial experiences—transforming grammar from symbol-to-symbol mapping into direct perceptual engagement.
 
 ### 2.4 Cognitive Profiles and Learning
 
@@ -534,10 +540,11 @@ The tool's philosophy—**to convey without speaking**—extends from its interf
 2. Harnad, S. (1990). The Symbol Grounding Problem. *Physica D*, 42(1-3), 335-346.
 3. Kawashima, C., & Teddy. (2026). Monolith — Structural English Visualizer. GitHub. https://github.com/goodsun/monolith
 4. Krashen, S. (1982). *Principles and Practice in Second Language Acquisition*. Pergamon Press.
-5. Kubrick, S. (Director). (1968). *2001: A Space Odyssey* [Film]. Metro-Goldwyn-Mayer.
-6. Taniguchi, T. (2016). *Symbol Emergence in Robotics*. Springer.
-7. Varela, F. J., Thompson, E., & Rosch, E. (1991). *The Embodied Mind: Cognitive Science and Human Experience*. MIT Press.
-8. Wechsler, D. (2008). *Wechsler Adult Intelligence Scale—Fourth Edition (WAIS-IV)*. Pearson.
+5. Lakoff, G., & Johnson, M. (1980). *Metaphors We Live By*. University of Chicago Press.
+6. Kubrick, S. (Director). (1968). *2001: A Space Odyssey* [Film]. Metro-Goldwyn-Mayer.
+7. Taniguchi, T. (2016). *Symbol Emergence in Robotics*. Springer.
+8. Varela, F. J., Thompson, E., & Rosch, E. (1991). *The Embodied Mind: Cognitive Science and Human Experience*. MIT Press.
+9. Wechsler, D. (2008). *Wechsler Adult Intelligence Scale—Fourth Edition (WAIS-IV)*. Pearson.
 
 ---
 
