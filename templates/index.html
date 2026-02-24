@@ -160,7 +160,7 @@
   .role-M  { border: 2px solid #b197fc; background: rgba(177,151,252,0.08); }
   .role-CONJ { border: 2px solid #868e96; background: rgba(134,142,150,0.08); }
   .role-REL  { border: 2px solid #ff922b; background: rgba(255,146,43,0.08); }
-  .role-SUB  { border: 2px solid #20c997; background: rgba(32,201,151,0.08); }
+  .role-SUB  { border: 2px solid #22b8cf; background: rgba(34,184,207,0.08); }
 
   .role-S .block-text  { color: #4a9eff; }
   .role-V .block-text  { color: #ff6b6b; }
@@ -169,7 +169,7 @@
   .role-M .block-text  { color: #b197fc; }
   .role-CONJ .block-text { color: #868e96; }
   .role-REL .block-text  { color: #ff922b; }
-  .role-SUB .block-text  { color: #20c997; }
+  .role-SUB .block-text  { color: #22b8cf; }
 
   /* Nested blocks get slightly more padding and distinct background */
   .block .block { background: rgba(255,255,255,0.03); }
@@ -658,7 +658,7 @@
   <div class="legend-item"><div class="legend-dot" style="background:#ffd43b"></div><span class="leg-normal">Object <i class="fas fa-crosshairs"></i></span><span class="leg-shift">何を 目</span><span class="legend-tip">Object（目的語）— 動作の受け手。「何を」「誰を」。動詞の力が向かう先。</span></div>
   <div class="legend-item"><div class="legend-dot" style="background:#51cf66"></div><span class="leg-normal">Complement <i class="fas fa-scale-balanced"></i></span><span class="leg-shift">＝何 補</span><span class="legend-tip">Complement（補語）— イコールの関係。She is a doctor. の「a doctor」のように、主語＝何かを示す。</span></div>
   <div class="legend-item"><div class="legend-dot" style="background:#b197fc"></div><span class="leg-normal">Modifier <i class="fas fa-gem"></i></span><span class="leg-shift">いつ・どこ 修</span><span class="legend-tip">Modifier（修飾語句）— 追加情報。いつ・どこで・どうやって。なくても文は成り立つが、意味が豊かになる。</span></div>
-  <div class="legend-item"><div class="legend-dot" style="background:#20c997"></div><span class="leg-normal">Clause <i class="fas fa-layer-group"></i></span><span class="leg-shift">文の中の文 従</span><span class="legend-tip">Subordinate Clause（従属節）— 「〜ということ」「〜なので」。文の中にもう一つの文が入る入れ子構造。</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#22b8cf"></div><span class="leg-normal">Clause <i class="fas fa-layer-group"></i></span><span class="leg-shift">文の中の文 従</span><span class="legend-tip">Subordinate Clause（従属節）— 「〜ということ」「〜なので」。文の中にもう一つの文が入る入れ子構造。</span></div>
   <div class="legend-item"><div class="legend-dot" style="background:#ff922b"></div><span class="leg-normal">Relative <i class="far fa-handshake"></i></span><span class="leg-shift">説明する文 関</span><span class="legend-tip">Relative Clause（関係詞節）— 「〜するところの」。名詞を後ろから説明する文。英語が前から後ろに伸びる感覚の正体。</span></div>
   <div class="legend-item"><div class="legend-dot" style="background:#868e96"></div><span class="leg-normal">Conjunction <i class="fas fa-link"></i></span><span class="leg-shift">つなぎ 接</span><span class="legend-tip">Conjunction（接続詞）— つなぎ言葉。that, which, because, and など。ブロックとブロックをつなぐ接着剤。</span></div>
 </div>
@@ -839,7 +839,7 @@ function renderSentences(sentences, container) {
         [/補語/g, '#51cf66'],          // C = green
         [/修飾語?句?/g, '#b197fc'],    // M = purple
         [/修飾/g, '#b197fc'],
-        [/従属節/g, '#20c997'],        // SUB = teal
+        [/従属節/g, '#22b8cf'],        // SUB = teal
         [/関係詞節?/g, '#ff922b'],     // REL = orange
         [/関係節/g, '#ff922b'],
         [/接続詞/g, '#868e96'],        // CONJ = gray
