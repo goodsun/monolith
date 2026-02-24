@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify
 from google import genai
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 API_KEY_PATH = os.path.expanduser("~/.config/google/gemini_api_key")
 with open(API_KEY_PATH) as f:
